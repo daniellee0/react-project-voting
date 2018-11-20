@@ -1,0 +1,58 @@
+<<<<<<< HEAD
+ FAIL  ./project.spec.js
+  Used test-driven development
+    ✕ Used Jest to pre-test code, saved in `pretest.txt` (2ms)
+  Source code is valid
+    ✓ HTML validates without errors (12ms)
+    ✓ CSS validates without errors (95ms)
+  Has required HTML
+    ✓ Specifies charset (4ms)
+    ✓ Includes page title (2ms)
+    ✓ Includes author metadata (2ms)
+    ✓ Has a top-level heading (1ms)
+
+  ● Used test-driven development › Used Jest to pre-test code, saved in `pretest.txt`
+
+    ENOENT: no such file or directory, open '/Users/daniellee/Documents/Informatics/project-daniellee0/pretest.txt'
+=======
+Daniels-Air:project-daniellee0 daniellee$ jest 
+ FAIL  ./project.spec.js
+  Used test-driven development
+    ✕ Used Jest to pre-test code, saved in `pretest.txt` (4ms)
+  Source code is valid
+    ✓ HTML validates without errors (22ms)
+    ✓ CSS validates without errors (76ms)
+  Has required HTML
+    ✓ Specifies charset (6ms)
+    ✓ Includes page title (4ms)
+    ✓ Includes author metadata (4ms)
+    ✓ Has a top-level heading (2ms)
+
+  ● Used test-driven development › Used Jest to pre-test code, saved in `pretest.txt`
+
+    ENOENT: no such file or directory, open '/Users/daniellee/Documents/info_340/project-daniellee0/pretest.txt'
+>>>>>>> 25b18c501c1c4a7f1dfbe169ed9f6bd65ff049e8
+
+      16 |   test('Used Jest to pre-test code, saved in `pretest.txt`', () => {
+      17 |     const path = __dirname + '/pretest.txt'
+    > 18 |     const pretest = fs.readFileSync(path, 'utf-8');
+         |                        ^
+<<<<<<< HEAD
+      19 |     expect(pretest);
+=======
+      19 |     expect(pretest).toMatch(/Tests: +17 failed, 1 passed, 18 total/)
+>>>>>>> 25b18c501c1c4a7f1dfbe169ed9f6bd65ff049e8
+      20 |   })
+      21 | })
+
+      at Object.readFileSync (project.spec.js:18:24)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 6 passed, 7 total
+Snapshots:   0 total
+<<<<<<< HEAD
+Time:        2.432s
+=======
+Time:        6.263s
+>>>>>>> 25b18c501c1c4a7f1dfbe169ed9f6bd65ff049e8
+Ran all test suites.

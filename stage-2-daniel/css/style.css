@@ -1,0 +1,364 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(100, 100, 100);
+    background-color: rgb(245, 245, 245);
+    height: 100%;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+#banner, div, #get-started, #form h2, p, #analytics, #submit-feedback {
+    text-align: center;
+}
+
+#nav button, h1 a, header, #learn-button, #get-started, #name, #submit-feedback button, #add-chart {
+    color: white;
+}
+
+#start-button, #analytics img, .content-container div{
+    background-color: white;
+}
+
+/* NAVIGATION */
+#nav button {
+    background-color: rgba(212, 212, 212, 0.2);
+    padding: 0.5rem;
+    width: 2.5rem;
+    margin: 0.3rem;
+    border-radius: 5px;
+    
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+/* HEADER/BANNER */
+header {
+    background: url(../images/cityscape2.jpg);  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: fixed;
+    padding-bottom: 10rem;
+}
+
+#banner {
+    padding-top: 3rem; 
+    padding-bottom: 3rem;
+}
+
+#banner-buttons a {
+    padding: 0.7rem 2rem 0.7rem 2rem;
+    margin: 0.4rem;
+    border-radius: 5px;
+}
+
+#start-button {
+    color: rgb(100, 100, 100);
+    background-color: rgba(255, 255, 255);
+}
+
+#start-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#learn-button {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#learn-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+#introduction {
+    position: relative;
+    top: -7rem;
+}
+
+/* INTRODUCTION */
+.content-container div {
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+}
+
+#introduction h2, #community h2 {
+    border-bottom: 5px solid rgb(245, 245, 245);
+    padding-bottom: 1rem;
+}
+
+
+/* CARDS */
+.cards {         
+    display: flex;
+    flex-direction: column;           
+    justify-content: space-around;
+}
+
+.cards div {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);   
+    margin-top: 1.0rem;
+}
+
+p {
+    overflow-wrap: break-word;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+/* START SECTION */
+#get-started {
+    margin-top: 1rem;
+    padding: 5rem;
+    background-color: rgb(234, 153, 130);
+}
+
+#begin-button {
+    background-color: rgb(204, 51, 0);
+    font-size: 1.2rem;
+    border-radius: 5px;
+    color: white;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#get-started form {
+    display: flex;
+    flex-direction: column;
+}
+
+#get-started form div {
+    width: 100%;
+    margin: auto;
+    padding-top: 0.5rem;
+}
+
+
+#name {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 0;
+    padding: 0.5rem;
+}
+
+#address {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 0;
+    padding: 0.5rem;
+}
+
+/* FORM SECTION */
+#form {
+    display: none;
+    margin-top: 2rem;
+}
+
+#form p {
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+}
+
+table {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+td {
+    padding: 1rem;
+    display: table-row;
+}
+
+td input {
+    margin-left: 3px;
+}
+
+tr {
+    height: 100px;
+}
+
+td label {
+    margin-left: 1rem;
+}
+
+.form-labels {
+    display: none;
+}
+
+#submit-feedback button, #add-chart{
+    font-size: 1.2rem;
+    background-color: rgb(204, 51, 0);
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    padding: .5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+#add-chart {
+    background-color: rgb(0, 153, 51);
+    display: none;
+    text-align: center;
+}
+
+/* ANALYTICS */
+#analytics {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.people img{
+    max-width: 110px;
+    border-radius: 50%;
+}
+
+#analytics img {
+    max-width: 100%;
+    margin: 1rem;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);  
+}
+
+.chart {
+    margin-bottom: 1rem;
+}
+
+#analytics div p {
+    margin-left: .8rem;
+    margin-right: .8rem;
+}
+
+#analytics-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    min-width: initial;
+    margin: auto;
+}
+
+.legend li span{
+    margin-left: 1rem;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+}
+
+.legend li {
+    margin-right: 0.5rem;
+    display: inline-block;
+    list-style-type: none;
+}
+
+/* FOOTER */
+footer {
+    background-color: #efefef;
+    
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ABOUT PAGE */
+#about div div:nth-child(1) p{
+    text-align: left;
+}
+
+#about div div h1 a {
+    color: rgb(100, 100, 100);
+}
+
+@media (min-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    #name {
+        width: 368px;
+    }
+
+    #address {
+        width: 450px;
+    }
+
+}
+
+@media (min-width: 875px) {
+    td {
+        display: table-cell;
+    }
+
+    tr td:nth-child(2) {
+        text-align: right;
+    }
+}
+
+@media (min-width: 900px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    table {
+        margin: auto;
+    }
+
+    td input {
+        margin-left: 1px;
+    }
+    
+    .content-container {
+        width: 85%;
+        margin: auto;
+    }
+
+    .cards div {
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .people img {
+        max-width: 120px;
+    }
+
+    #analytics-container {
+        width: 900px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .cards {
+        flex-direction: row;
+    }
+
+}
