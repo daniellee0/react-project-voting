@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Map from './Map';
 
 export default class Analytics extends Component {
     render() {
@@ -12,6 +13,9 @@ export default class Analytics extends Component {
                 <div id="analytics-container">
                     <div className="chart">
                         <canvas className="chart1"></canvas>
+                    </div>
+                    <div className="map">
+                        <Map></Map>
                     </div>
                 </div>
             </div>
