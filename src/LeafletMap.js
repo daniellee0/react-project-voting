@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Map extends Component {
+export default class LeafletMap extends Component {
   
     render() {
       return (
