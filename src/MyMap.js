@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
-import {LeafletMap, Map, TileLayer} from 'react-leaflet';
+import {Map, TileLayer} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'
 
 
 let state = {
@@ -13,7 +14,7 @@ let parsedDataGlobal = {
   data: []
 };
 
-export default class MyMap extends Component {
+export class MyMap extends Component {
   
     render() {
     // Parse the csv data into a JSON object and pass to global
@@ -34,12 +35,18 @@ export default class MyMap extends Component {
     console.log(parsedDataGlobal.data); //Testing
     // End Parsing
 
-
+      let testViewport = {
+        center: [51.505,-0.09],
+        zoom: 13
+      }
       return (
-        <Map center={[51.505, -0.09]}>
+        <Map viewport={testViewport} style={{ width: '100%', height: '600px' }}>
           <TileLayer
-            url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvOTB2Znd2MDA1eTNxbWsxNHAzdWtsZSJ9.UBa07eG7h1r273nHqQuKeA'
+            url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
             attribution= 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+            minZoom='1'
+            maxZoom='18'
+            id='mapbox.streets'
           />
         </Map>
       );
