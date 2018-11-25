@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LeafletMap from './LeafletMap';
+import MyMap from './MyMap';
 
 export default class Analytics extends Component {
     render() {
@@ -15,7 +15,7 @@ export default class Analytics extends Component {
                         <canvas className="chart1"></canvas>
                     </div>
                     <div className="map">
-                        <LeafletMap></LeafletMap>
+                        <MyMap></MyMap>
                     </div>
                 </div>
             </div>
