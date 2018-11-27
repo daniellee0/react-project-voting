@@ -18,7 +18,7 @@ export class MyMap extends Component {
   }
 
   componentDidMount() {
-
+    //Retrieve geojson data for county boundaries on the map and pass to state
     fetch('/data/combined.geo.json')
       .then(response => {
         let dataPromise = response.json();
@@ -30,7 +30,7 @@ export class MyMap extends Component {
         });
       }); 
 
-    // Parse the csv data into a JSON object and pass to global
+    // Parse the csv voter data into a JSON object and pass to state
     let file = "/data/voterparticipation.csv";
     Papa.parse(file, {
       header: true,
@@ -39,17 +39,41 @@ export class MyMap extends Component {
       trimHeaders: true,
       complete: (papaResults) => {
         let papaData = papaResults.data;
-        this.setState((currentState) => {
-          let targetPapaData = {data: papaData.filter(obj => obj.Age === currentState.targetAge[0] && obj.Year === currentState.targetYear[0] && obj.County !== 'zWashington State')};
-          return targetPapaData;
-        })
+        let temp = papaData.filter(obj => obj.Age === this.state.targetAge[0] && obj.Year === this.state.targetYear[0] && obj.County !== 'zWashington State');
+        this.setState( {
+          data: temp
+        });
       }
     });
   }
 
-  render() {
+  //Function for adding style to the geojson data of the map
+  addStyle = (feature) => {
+    let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
+    return {
+      fillColor: this.getColor(specificCountyData[0][this.state.targetFocus[0]]),
+      weight: 2,
+      opacity: 1,
+      color: 'white',
+      dashArray: '3',
+      fillOpacity: 0.7
+    };
+  }
 
-      let testViewport = {
+  //Called by addStyle, this adds color to each geojson county according to it's target value
+  getColor = (d) => {
+    return d > 0.9 ? '#1C3328' :
+    d > 0.8  ? '#2E5442' :
+    d > 0.7  ? '#41765D' :
+    d > 0.6  ? '#539777' :
+    d > 0.5   ? '#65B891' :
+    d > 0.4   ? '#81C4A5' :
+    d > 0.3   ? '#9DD1B9' :
+                '#C7E5D7';
+  }
+
+  render() {
+      let mapViewport = {
         center: [47.3511, -120.7401],
         zoom: 7
       }
@@ -57,7 +81,7 @@ export class MyMap extends Component {
       let tempString = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
 
       return (
-        <Map viewport={testViewport} style={{ width: '100%', height: '600px' }}>
+        <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
           <TileLayer
             url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
             attribution= {tempString}
@@ -65,7 +89,10 @@ export class MyMap extends Component {
             maxZoom='18'
             id='mapbox.streets'
           />
-          <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={{color: '#006400'}}/>
+          {this.state.data.length > 0 ? 
+          <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle}/>
+          : 
+          <div />}
         </Map>
       );
     }
