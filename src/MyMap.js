@@ -4,44 +4,32 @@ import {Map, TileLayer, GeoJSON} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'
 import hash from 'object-hash' //for making unique keys
 
-
-let initialData = {
-  targetYear: [2016],
-  targetFocus: ['Total Voter Turnout'],
-  targetAge: ['18-24']
-};
-
-let parsedDataGlobal = {
-  data: []
-};
-
 export class MyMap extends Component {
   
   constructor(props){
     super(props)
     this.state = {
-      geojsondata: ['Ahhhhh'],
-      testing: false
+      geojsondata: [], 
+      data: [],
+      targetYear: [2016],
+      targetFocus: ['Total Voter Turnout'],
+      targetAge: ['18-24']
     };
   }
 
   componentDidMount() {
+
     fetch('/data/combined.geo.json')
       .then(response => {
         let dataPromise = response.json();
         return dataPromise;
       })
       .then( jsonData => {
-        console.log(jsonData);
         this.setState({
           geojsondata: jsonData
         });
-        console.log(this.state.geojsondata);
       }); 
-      console.log(this.state.geojsondata);
-  }
 
-  render() {
     // Parse the csv data into a JSON object and pass to global
     let file = "/data/voterparticipation.csv";
     Papa.parse(file, {
@@ -49,16 +37,17 @@ export class MyMap extends Component {
       dynamicTyping: true,
       download: true,
       trimHeaders: true,
-      complete: function(papaResults) {
+      complete: (papaResults) => {
         let papaData = papaResults.data;
-        let targetPapaData = papaData.filter(obj => obj.Age === initialData.targetAge[0] && obj.Year === initialData.targetYear[0] && obj.County != 'zWashington State');
-        parsedDataGlobal.data.push(targetPapaData); 
-        console.log(papaData); //Testing
-        console.log(targetPapaData); //Testing
+        this.setState((currentState) => {
+          let targetPapaData = {data: papaData.filter(obj => obj.Age === currentState.targetAge[0] && obj.Year === currentState.targetYear[0] && obj.County !== 'zWashington State')};
+          return targetPapaData;
+        })
       }
     });
-    console.log(parsedDataGlobal.data); //Testing
-    // End Parsing
+  }
+
+  render() {
 
       let testViewport = {
         center: [47.3511, -120.7401],
