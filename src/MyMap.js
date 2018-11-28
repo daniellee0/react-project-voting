@@ -64,6 +64,27 @@ export class MyMap extends Component {
     });
   }
 
+  // onMouseOut = (e) => {
+  //   // this.resetStyle(e.target);
+  // 	console.log('onMouseOut', e)
+  // }
+  
+  // onMouseOver = (e) => {
+  //   let layer = e.target;
+ 
+  //   layer.setStyle({
+  //       weight: 5,
+  //       color: '#666',
+  //       dashArray: '',
+  //       fillOpacity: 0.7
+  //   });
+
+  //   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+  //     layer.bringToFront();
+  //   }
+  // 	console.log('onMouseOver', e)
+  // }
+
   //Function for adding style to the geojson data of the map
   addStyle = (feature) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
@@ -89,24 +110,41 @@ export class MyMap extends Component {
                 '#C7E5D7';
   }
 
+  onEachFeature = (feature, layer) => {
+    let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
+    let displayedText = `<h2>${this.state.targetFocus}</h2>` +  
+      '<b>' + feature.properties.name + " County" + '</b><br />' + (Math.round(specificCountyData[0][`${this.state.targetFocus}`] * 100) + "%")
+      + ` of ${this.state.targetAge} year olds` + ` in ${this.state.targetYear}`;
+    layer.on({
+      click: function(event) {
+        var popup = L.popup()
+            .setLatLng(event.latlng)
+            .setContent(displayedText)
+            .openOn(layer._map);
+
+          }
+    });
+  }
+
   render() {
       let mapViewport = {
         center: [47.3511, -120.7401],
         zoom: 7
       }
       
-      let legendDiv = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-        labels = [];
-      for (let i = 0; i < grades.length; i++) {
-        legendDiv.innerHTML +=
-            '<i style="background:' + this.getColor(grades[i] + 0.01) + '"></i> ' +
-            (grades[i] * 100) + (grades[i + 1] ? '&ndash;' + ((grades[i + 1])* 100) + '%' + '<br>' : '%+');
-      }  
+      // let legendDiv = L.DomUtil.create('div', 'info legend'),
+      //   grades = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+      //   labels = [];
+      // for (let i = 0; i < grades.length; i++) {
+      //   legendDiv.innerHTML +=
+      //       '<i style="background:' + this.getColor(grades[i] + 0.01) + '"></i> ' +
+      //       (grades[i] * 100) + (grades[i + 1] ? '&ndash;' + ((grades[i + 1])* 100) + '%' + '<br>' : '%+');
+      // }  
       // let legend = <AttributionControl position='bottomright'>{legendDiv}</AttributionControl>;
-      let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
-      console.log(legend);
-      console.log(this.state.targetAge);
+      // let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
+      // console.log(legend);
+
+      // let infoDiv = L.DomUtil.create('div', 'info');
 
       return (
           <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
@@ -118,10 +156,10 @@ export class MyMap extends Component {
               id='mapbox.streets'
             />
             {this.state.data.length > 0 ? 
-            <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle}/>
+            <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature}/>
             : 
             <div />}
-            {legend}
+            {/* {legend} */}
           </Map>
       );
     }
