@@ -12,10 +12,25 @@ export class MyMap extends Component {
     this.state = {
       geojsondata: [], 
       data: [],
+      allData: [],
       targetYear: props.year,
       targetFocus: props.focus,
       targetAge: props.age
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.year !== prevProps.year || this.props.age !== prevProps.age || this.props.focus !== prevProps.focus){
+      this.setState((currentState, currentProps) => {
+        let returnObject = {
+          targetYear: this.props.year,
+          targetFocus: this.props.focus,
+          targetAge: this.props.age,
+          data: currentState.allData.filter(obj => obj.Age === this.props.age && obj.Year === this.props.year && obj.County !== 'zWashington State')
+        }
+        return returnObject;
+      })
+    }
   }
 
   componentDidMount() {
@@ -42,6 +57,7 @@ export class MyMap extends Component {
         let papaData = papaResults.data;
         let temp = papaData.filter(obj => obj.Age === this.state.targetAge && obj.Year === this.state.targetYear && obj.County !== 'zWashington State');
         this.setState( {
+          allData: papaData,
           data: temp
         });
       }
@@ -90,6 +106,7 @@ export class MyMap extends Component {
       // let legend = <AttributionControl position='bottomright'>{legendDiv}</AttributionControl>;
       let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
       console.log(legend);
+      console.log(this.state.targetAge);
 
       return (
           <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>

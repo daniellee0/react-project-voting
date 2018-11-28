@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MyMap } from './MyMap';
 import {DropdownButton, MenuItem, ButtonToolbar} from 'react-bootstrap';
+import hash from 'object-hash'; //for making unique keys
 
 export class MapContainer extends Component {
 
@@ -8,7 +9,7 @@ export class MapContainer extends Component {
         super(props)
         this.state = {
           targetYear: 2016,
-          targetFocus: 'Total Voter Turnout',
+          targetFocus: 'Total Registered Population',
           targetAge: '18-24'
         };
       }
@@ -16,7 +17,7 @@ export class MapContainer extends Component {
     clickYear =  (value) => {
         console.log(value);
         this.setState({
-            targetYear: value
+            targetYear: parseInt(value)
         })
     }
 
@@ -61,7 +62,7 @@ export class MapContainer extends Component {
             <MenuItem eventKey="18-24" onSelect={this.clickAge}>18-24</MenuItem>
             <MenuItem eventKey="25-34" onSelect={this.clickAge}>25-34</MenuItem>
             <MenuItem eventKey="35-44" onSelect={this.clickAge}>35-44</MenuItem>
-            <MenuItem eventKey="44-54" onSelect={this.clickAge}>45-54</MenuItem>
+            <MenuItem eventKey="45-54" onSelect={this.clickAge}>45-54</MenuItem>
             <MenuItem eventKey="55-64" onSelect={this.clickAge}>55-64</MenuItem>
             <MenuItem eventKey="65-" onSelect={this.clickAge}>65+</MenuItem>
             <MenuItem eventKey="0TOTAL" onSelect={this.clickAge}>All</MenuItem>
@@ -79,6 +80,7 @@ export class MapContainer extends Component {
             </DropdownButton>
         </ButtonToolbar>
         ;
+        console.log(this.state.targetAge);
         return (
             <div>
                 {buttons}
