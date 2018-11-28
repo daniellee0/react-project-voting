@@ -43,7 +43,9 @@ Boostrap, ChartJS, PapaParse, Leaflet, LeafletReact, ChartReact
 
 ## Authors
 Kyle Avalani
+
 Daniel Lee
 
 Link: https://info340b-a18.github.io/project-daniellee0/
+
 https://github.com/info340b-a18/react-project-voting
