@@ -7,9 +7,9 @@ export class MapContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-          targetYear: [2016],
-          targetFocus: ['Total Voter Turnout'],
-          targetAge: ['18-24']
+          targetYear: 2016,
+          targetFocus: 'Total Voter Turnout',
+          targetAge: '18-24'
         };
       }
 
@@ -83,7 +83,7 @@ export class MapContainer extends Component {
             <div>
                 {buttons}
                 <div className="map leaflet-container">
-                    <MyMap></MyMap>
+                    <MyMap year={this.state.targetYear} age={this.state.targetAge} focus={this.state.targetFocus}></MyMap>
                 </div>
             </div>
         );

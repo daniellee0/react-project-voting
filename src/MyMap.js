@@ -12,9 +12,9 @@ export class MyMap extends Component {
     this.state = {
       geojsondata: [], 
       data: [],
-      targetYear: [2016],
-      targetFocus: ['Total Voter Turnout'],
-      targetAge: ['18-24']
+      targetYear: props.year,
+      targetFocus: props.focus,
+      targetAge: props.age
     };
   }
 
@@ -40,7 +40,7 @@ export class MyMap extends Component {
       trimHeaders: true,
       complete: (papaResults) => {
         let papaData = papaResults.data;
-        let temp = papaData.filter(obj => obj.Age === this.state.targetAge[0] && obj.Year === this.state.targetYear[0] && obj.County !== 'zWashington State');
+        let temp = papaData.filter(obj => obj.Age === this.state.targetAge && obj.Year === this.state.targetYear && obj.County !== 'zWashington State');
         this.setState( {
           data: temp
         });
@@ -52,7 +52,7 @@ export class MyMap extends Component {
   addStyle = (feature) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
     return {
-      fillColor: this.getColor(specificCountyData[0][this.state.targetFocus[0]]),
+      fillColor: this.getColor(specificCountyData[0][this.state.targetFocus]),
       weight: 2,
       opacity: 1,
       color: 'white',
