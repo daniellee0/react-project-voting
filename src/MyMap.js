@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
 import L from 'leaflet';
-import {Map, TileLayer, GeoJSON, AttributionControl, LayersControl, Popup, Tooltip} from 'react-leaflet';
+import {Map, TileLayer, GeoJSON, AttributionControl} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import hash from 'object-hash'; //for making unique keys
+import Control from 'react-leaflet-control';
 
 export class MyMap extends Component {
   
@@ -64,27 +65,6 @@ export class MyMap extends Component {
     });
   }
 
-  // onMouseOut = (e) => {
-  //   // this.resetStyle(e.target);
-  // 	console.log('onMouseOut', e)
-  // }
-  
-  // onMouseOver = (e) => {
-  //   let layer = e.target;
- 
-  //   layer.setStyle({
-  //       weight: 5,
-  //       color: '#666',
-  //       dashArray: '',
-  //       fillOpacity: 0.7
-  //   });
-
-  //   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-  //     layer.bringToFront();
-  //   }
-  // 	console.log('onMouseOver', e)
-  // }
-
   //Function for adding style to the geojson data of the map
   addStyle = (feature) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
@@ -110,6 +90,7 @@ export class MyMap extends Component {
                 '#C7E5D7';
   }
 
+  //Applies the popup
   onEachFeature = (feature, layer) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
     let displayedText = `<h2>${this.state.targetFocus}</h2>` +  
@@ -129,7 +110,7 @@ export class MyMap extends Component {
             .openOn(layer._map);
       },
       // mouseout: function(event){
-      //   this.leafletElement.resetStyle(layer);
+      //   this.refs.geojson.leafletElement.resetStyle(layer);
       // }
     });
   }
@@ -139,18 +120,18 @@ export class MyMap extends Component {
         center: [47.3511, -120.7401],
         zoom: 7
       }
-      
-      // let legendDiv = L.DomUtil.create('div', 'info legend'),
-      //   grades = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
-      //   labels = [];
-      // for (let i = 0; i < grades.length; i++) {
-      //   legendDiv.innerHTML +=
-      //       '<i style="background:' + this.getColor(grades[i] + 0.01) + '"></i> ' +
-      //       (grades[i] * 100) + (grades[i + 1] ? '&ndash;' + ((grades[i + 1])* 100) + '%' + '<br>' : '%+');
-      // }  
-      // let legend = <AttributionControl position='bottomright'>{legendDiv}</AttributionControl>;
-      // let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
-      // console.log(legend);
+
+      let legend = 
+        <div className='info legend'>
+          <i style={{background:"#C7E5D7"}}></i>0-30%<br></br>
+          <i style={{background:"#9DD1B9"}}></i>30-40%<br></br>
+          <i style={{background:"#81C4A5"}}></i>40-50%<br></br>
+          <i style={{background:"#65B891"}}></i>50-60%<br></br>
+          <i style={{background:"#539777"}}></i>60-70%<br></br>
+          <i style={{background:"#41765D"}}></i>70-80%<br></br>
+          <i style={{background:"#2E5442"}}></i>80-90%<br></br>
+          <i style={{background:"#1C3328"}}></i>90+%<br></br>
+        </div>;
 
       return (
           <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
@@ -165,6 +146,11 @@ export class MyMap extends Component {
             <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
             : 
             <div />}
+            <Control position="bottomright">
+              <div>
+                {legend}
+              </div>
+            </Control>
           </Map>
       );
     }
