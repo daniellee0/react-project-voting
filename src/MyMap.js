@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
-import {Map, TileLayer, GeoJSON} from 'react-leaflet';
-import 'leaflet/dist/leaflet.css'
-import hash from 'object-hash' //for making unique keys
+import L from 'leaflet';
+import {Map, TileLayer, GeoJSON, AttributionControl, LayersControl} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import hash from 'object-hash'; //for making unique keys
 
 export class MyMap extends Component {
   
@@ -77,23 +78,34 @@ export class MyMap extends Component {
         center: [47.3511, -120.7401],
         zoom: 7
       }
-
-      let tempString = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+      
+      let legendDiv = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+        labels = [];
+      for (let i = 0; i < grades.length; i++) {
+        legendDiv.innerHTML +=
+            '<i style="background:' + this.getColor(grades[i] + 0.01) + '"></i> ' +
+            (grades[i] * 100) + (grades[i + 1] ? '&ndash;' + ((grades[i + 1])* 100) + '%' + '<br>' : '%+');
+      }  
+      // let legend = <AttributionControl position='bottomright'>{legendDiv}</AttributionControl>;
+      let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
+      console.log(legend);
 
       return (
-        <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
-          <TileLayer
-            url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
-            attribution= {tempString}
-            minZoom='1'
-            maxZoom='18'
-            id='mapbox.streets'
-          />
-          {this.state.data.length > 0 ? 
-          <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle}/>
-          : 
-          <div />}
-        </Map>
+          <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
+            <TileLayer
+              url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
+              attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+              minZoom='1'
+              maxZoom='18'
+              id='mapbox.streets'
+            />
+            {this.state.data.length > 0 ? 
+            <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle}/>
+            : 
+            <div />}
+            {legend}
+          </Map>
       );
     }
   }
