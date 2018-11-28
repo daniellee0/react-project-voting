@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
 import L from 'leaflet';
-import {Map, TileLayer, GeoJSON, AttributionControl, LayersControl} from 'react-leaflet';
+import {Map, TileLayer, GeoJSON, AttributionControl, LayersControl, Popup, Tooltip} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import hash from 'object-hash'; //for making unique keys
 
@@ -116,13 +116,21 @@ export class MyMap extends Component {
       '<b>' + feature.properties.name + " County" + '</b><br />' + (Math.round(specificCountyData[0][`${this.state.targetFocus}`] * 100) + "%")
       + ` of ${this.state.targetAge} year olds` + ` in ${this.state.targetYear}`;
     layer.on({
-      click: function(event) {
-        var popup = L.popup()
+      mouseover: function(event) {
+        // layer.setStyle({
+        //   weight: 5,
+        //   color: '#666',
+        //   dashArray: '',
+        //   fillOpacity: 0.7
+        // });
+        L.popup()
             .setLatLng(event.latlng)
             .setContent(displayedText)
             .openOn(layer._map);
-
-          }
+      },
+      // mouseout: function(event){
+      //   this.leafletElement.resetStyle(layer);
+      // }
     });
   }
 
@@ -144,8 +152,6 @@ export class MyMap extends Component {
       // let legend = <AttributionControl position='bottomright'><div><p>Testing</p></div></AttributionControl>;
       // console.log(legend);
 
-      // let infoDiv = L.DomUtil.create('div', 'info');
-
       return (
           <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
             <TileLayer
@@ -156,10 +162,9 @@ export class MyMap extends Component {
               id='mapbox.streets'
             />
             {this.state.data.length > 0 ? 
-            <GeoJSON key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature}/>
+            <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
             : 
             <div />}
-            {/* {legend} */}
           </Map>
       );
     }
