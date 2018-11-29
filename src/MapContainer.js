@@ -82,7 +82,7 @@ export class MapContainer extends Component {
         ;
         console.log(this.state.targetAge);
         return (
-            <div>
+            <div id="map-container">
                 {buttons}
                 <div className="map leaflet-container">
                     <MyMap year={this.state.targetYear} age={this.state.targetAge} focus={this.state.targetFocus}></MyMap>

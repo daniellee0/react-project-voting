@@ -12,12 +12,12 @@ export default class Form extends Component {
                         <tr>
                             <td>Indicate the election type</td>
                             <td>
-                            <label htmlFor="primary">Primary</label>
-                            <input type="radio" name="election-type" id="primary" value="primary"/>
-                            <label htmlFor="general">General</label>
-                            <input type="radio" name="election-type" id="general" value="general"/>
-                            <label htmlFor="local">Local</label>
-                            <input type="radio" name="election-type" id="local" value="local"/>
+                                <label htmlFor="primary">Primary</label>
+                                <input type="radio" name="election-type" id="primary" value="primary"/>
+                                <label htmlFor="general">General</label>
+                                <input type="radio" name="election-type" id="general" value="general"/>
+                                <label htmlFor="local">Local</label>
+                                <input type="radio" name="election-type" id="local" value="local"/>
                             </td>
                         </tr>
                     </tbody>

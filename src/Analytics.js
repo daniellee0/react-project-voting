@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MapContainer } from './MapContainer';
+import Charts from './Charts';
 
 export default class Analytics extends Component {
     render() {
@@ -8,13 +9,10 @@ export default class Analytics extends Component {
                 <div id="analytics-header">
                     <h2>Analytics</h2>
                     <p>Learn more about voter turnout, satisfaction, and feedback.</p>
-                    <button id="add-chart">Add Chart</button>
                 </div>
                 <div id="analytics-container">
-                    <div className="chart">
-                        <canvas className="chart1"></canvas>
-                    </div>
-                <MapContainer></MapContainer>
+                    <Charts county={this.props.county}/>
+                    <MapContainer></MapContainer>
                 </div>
             </div>
         );

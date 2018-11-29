@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 
 import {
@@ -17,7 +18,7 @@ export default class NavbarFeatures extends Component {
     
         this.toggle = this.toggle.bind(this);
         this.state = {
-        isOpen: false
+            isOpen: false,
         };
     }
     
@@ -28,39 +29,27 @@ export default class NavbarFeatures extends Component {
     }
 
     render() {
+ 
         return (
-        <div id="navbar">
-            <Navbar color="transparent" light expand="md">
-            <NavbarBrand href="/"><p>Voting</p></NavbarBrand>
+        <nav>
+            <Navbar color="transparent" dark expand="md">
+            {/* <NavbarBrand href="/"><p>Voting</p></NavbarBrand> */}
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                <NavItem>
-                    <NavLink href="/components/"><p>About</p></NavLink>
+                <Nav navbar>
+                <NavItem id="home-button">
+                    <NavLink tag={Link} to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap"><p>Get Started</p></NavLink>
+                    <NavLink tag={Link} to="/about">About</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} to="/home#get-started">Get Started</NavLink>
                 </NavItem>
                 </Nav>
             </Collapse>
             </Navbar>
-        </div>
+        </nav>
         );
     }
 }
-
-Navbar.propTypes = {
-    light: PropTypes.bool,
-    dark: PropTypes.bool,
-    fixed: PropTypes.string,
-    color: PropTypes.string,
-    role: PropTypes.string,
-    expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
-    // pass in custom element to use
-    };
-
-    NavbarBrand.propTypes = {
-    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
-    // pass in custom element to use
-    }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Papa from 'papaparse';
 import L from 'leaflet';
 import {Map, TileLayer, GeoJSON, AttributionControl} from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import hash from 'object-hash'; //for making unique keys
 import Control from 'react-leaflet-control';
 
@@ -134,7 +133,7 @@ export class MyMap extends Component {
         </div>;
 
       return (
-          <Map viewport={mapViewport} style={{ width: '100%', height: '600px' }}>
+          <Map viewport={mapViewport} style={{ width: '500px', height: '500px' }}>
             <TileLayer
               url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
               attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
