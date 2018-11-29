@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
 import L from 'leaflet';
-import {Map, TileLayer, GeoJSON, AttributionControl} from 'react-leaflet';
+import {Map, TileLayer, GeoJSON} from 'react-leaflet';
 import hash from 'object-hash'; //for making unique keys
 import Control from 'react-leaflet-control';
 
+// Component representing the single map to be displayed on the web application
 export class MyMap extends Component {
   
+  // Sets the state for the map. Takes in year, focus, and age props. 
   constructor(props){
     super(props)
     this.state = {
@@ -19,6 +21,7 @@ export class MyMap extends Component {
     };
   }
 
+  // Sets a new state when the component will receive props. 
   componentWillReceiveProps(nextProps){
     this.setState({
       targetYear: nextProps.year,
@@ -27,6 +30,7 @@ export class MyMap extends Component {
     })
   }
 
+    // Sets a new state when the component will updates.
   componentDidUpdate(prevProps) {
     if(this.props.year !== prevProps.year || this.props.age !== prevProps.age || this.props.focus !== prevProps.focus){
       this.setState((currentState, currentProps) => {
@@ -41,9 +45,10 @@ export class MyMap extends Component {
     }
   }
 
+  // Is called when the component is mounted. Retrieves geojson data.
   componentDidMount() {
     //Retrieve geojson data for county boundaries on the map and pass to state
-    fetch('/data/combined.geo.json')
+    fetch('data/combined.geo.json')
       .then(response => {
         let dataPromise = response.json();
         return dataPromise;
@@ -55,7 +60,7 @@ export class MyMap extends Component {
       }); 
 
     // Parse the csv voter data into a JSON object and pass to state
-    let file = "/data/voterparticipation.csv";
+    let file = "data/voterparticipation.csv";
     Papa.parse(file, {
       header: true,
       dynamicTyping: true,
@@ -100,28 +105,22 @@ export class MyMap extends Component {
   //Applies the popup
   onEachFeature = (feature, layer) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
-    let displayedText = `<h2>${this.state.targetFocus}</h2>` +  
-      '<b>' + feature.properties.name + " County" + '</b><br />' + (Math.round(specificCountyData[0][`${this.state.targetFocus}`] * 100) + "%")
-      + ' of ' + this.state.targetAge + ' year olds' + ` in ${this.state.targetYear}`;
+    let targetFocus = Math.round(specificCountyData[0][this.state.targetFocus] * 100);
+    let displayedText = `<h2>${this.state.targetFocus}</h2><b>${feature.properties.name} County</b>
+                        <br />${targetFocus}% of ${this.state.targetAge} year olds in ${this.state.targetYear}`;
+    
+    // Apply layer
     layer.on({
       mouseover: function(event) {
-        // layer.setStyle({
-        //   weight: 5,
-        //   color: '#666',
-        //   dashArray: '',
-        //   fillOpacity: 0.7
-        // });
         L.popup()
             .setLatLng(event.latlng)
             .setContent(displayedText)
             .openOn(layer._map);
       },
-      // mouseout: function(event){
-      //   this.refs.geojson.leafletElement.resetStyle(layer);
-      // }
     });
   }
 
+  // Render Map component. Contains the map and legend as well. 
   render() {
       let mapViewport = {
         center: [47.3511, -120.7401],
@@ -140,8 +139,9 @@ export class MyMap extends Component {
           <i style={{background:"#1C3328"}}></i>90+%<br></br>
         </div>;
 
+      // Returns a map that contains a legend and and the map itself. This data is layered over the initial tile layer.
       return (
-          <Map viewport={mapViewport} style={{ width: '500px', height: '500px' }}>
+          <Map id="map" viewport={mapViewport} style={{ height: '470px' }}>
             <TileLayer
               url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
               attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'

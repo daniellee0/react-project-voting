@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import * as Papa from 'papaparse';
 import Chart from './Chart';
 
-// Need to put this in the callback function!!!
-
-
+// Component representing the container for all charts to render
 export default class Charts extends Component {
+    // Takes in a county prop representing the county the user has chosen.
     constructor(props) {
         super(props);
         this.state = {
-            // Data for charts
-        //   charts: []
             allFeedback: [],
             overallSatisfaction: [],
             charts: [],
@@ -18,47 +15,50 @@ export default class Charts extends Component {
         };
     }
 
-    // Need to put this in the callback function!!!
+    // Processes the data and returns an array representing the total response feedback
+    // for each unique location    
     processResponses(data) {
         let results = [];
         data.data.forEach( (entry) => {
             let contains = false;
             results.forEach( (location) => {
-                if (location.PollingLocation === entry.PollingLocationName) {
+                // If the county exists in the results, increment responses
+                if (location.County === entry.County) {
                     location.Overall_Experience[parseInt(entry.Overall_Experience)-1]++;
-                    location.Wait_Time[parseInt(entry.Wait_Time)-1]++;
-                    location.Registration[parseInt(entry.Registration)-1]++;
-                    location.Service[parseInt(entry.Service)-1]++;
+                    location.Convenience[parseInt(entry.Convenience)-1]++;
+                    location.Timely_Ballot[parseInt(entry.Timely_Ballot)-1]++;
+                    location.Online_Voting[parseInt(entry.Online_Voting)-1]++;
                     location.Timeframe[parseInt(entry.Timeframe)-1]++;
                     location.Resources[parseInt(entry.Resources)-1]++;
                     location.Comments.push(entry.Comments);
                     contains = true;
                 }
             });
+            // If the given county doesn't exist in results create new entry
             if (contains === false) {
-                let newLocation = {PollingLocation: entry.PollingLocationName, 
+                let newLocation = {County: entry.County, 
                     Overall_Experience: [0, 0, 0, 0, 0],
-                    Wait_Time: [0, 0, 0, 0, 0],
-                    Registration: [0, 0, 0, 0, 0],
-                    Service: [0, 0, 0, 0, 0],
+                    Convenience: [0, 0, 0, 0, 0],
+                    Timely_Ballot: [0, 0, 0, 0, 0],
+                    Online_Voting: [0, 0, 0, 0, 0],
                     Timeframe: [0, 0, 0, 0, 0],
                     Resources: [0, 0, 0, 0, 0],
                     Comments: []
                 };
                 newLocation.Overall_Experience[parseInt(entry.Overall_Experience)-1]++;
-                newLocation.Wait_Time[parseInt(entry.Wait_Time)-1]++;
-                newLocation.Registration[parseInt(entry.Registration)-1]++;
-                newLocation.Service[parseInt(entry.Service)-1]++;
+                newLocation.Convenience[parseInt(entry.Convenience)-1]++;
+                newLocation.Timely_Ballot[parseInt(entry.Timely_Ballot)-1]++;
+                newLocation.Online_Voting[parseInt(entry.Online_Voting)-1]++;
                 newLocation.Timeframe[parseInt(entry.Timeframe)-1]++;
                 newLocation.Resources[parseInt(entry.Resources)-1]++;
                 newLocation.Comments.push(entry.Comments);
                 results.push(newLocation);
-                
             }
         });
         return results;
     }
-
+    // Takes a data array and obtains and returns an array representing the total 
+    // feedback for every polling location in the data
     getTotalResponse(data) {
         let results = [1, 1, 1, 1, 1];
         for (let i=0; i<data.length; i++) {
@@ -69,9 +69,11 @@ export default class Charts extends Component {
         return results;
     }
 
+    // Takes a data array and name representing the name of the polling location 
+    // and returns an index corresponding to that name in the data.
     getLocationIndex(name) {
         for (let i=0; i<this.state.allFeedback.length; i++) {
-            let dataUpper = (this.state.allFeedback[i].PollingLocation).toUpperCase();
+            let dataUpper = (this.state.allFeedback[i].County).toUpperCase();
             let nameUpper = (name).toUpperCase();
             if (dataUpper === nameUpper) {
                 return i;
@@ -80,11 +82,12 @@ export default class Charts extends Component {
         return -1;
     }
 
-    // County is in PROPS USE TO FILTER DATA
+    // Fetches data and sets the state to the data from the csv file once the component is mounted.
     componentDidMount() {
-        
         let chartDataCopy = this.state;
+        // Start fetch
         fetch('data/voter-feedback.csv')
+        // Process the response and return the stream
         .then(response => {
             let reader = response.body.getReader();
             return new ReadableStream({
@@ -105,8 +108,11 @@ export default class Charts extends Component {
                 }  
               })
             })
+        // Converts to new Response object
         .then(stream => new Response(stream))
+        // Converts to blob
         .then(response => response.blob())
+        // Sets all feedback, overallSatisfaction, charts, and questionNames state
         .then(blob => {
             let results = "";
             let responses = [];
@@ -114,17 +120,13 @@ export default class Charts extends Component {
             var reader = new FileReader();
             reader.onload = () => {
                 results = reader.result;
-                // this.setState(processResponses(Papa.parse(results, {header: true})));
                 responses = this.processResponses(Papa.parse(results, {header: true}));
                 totalResponses = this.getTotalResponse(responses);
                 chartDataCopy.allFeedback = responses;
                 let qNames = Object.keys(this.state.allFeedback[0]); 
                 chartDataCopy.questionNames = qNames;
-                console.log(qNames);
                 chartDataCopy.overallSatisfaction = totalResponses;
                 chartDataCopy.charts.push({data: totalResponses, text: 'Overall Satisfaction'});
-                // chartDataCopy.charts.push({data: totalResponses, text: 'Overall Satisfaction'});
-                // chartDataCopy.chartData.datasets[0].data = totalResponses;
                 this.setState(chartDataCopy);
             };
             reader.readAsText(blob);
@@ -133,9 +135,10 @@ export default class Charts extends Component {
         .catch(error => console.log(error))
     }
 
+    // Replaces the previous state with 3 new charts of the given county once the component updates (county passed)
     componentDidUpdate(prevProps) {
         let chartDataCopy = this.state;
-        if (this.props.county !== prevProps.county && this.props.count !== "") {
+        if (this.props.county !== prevProps.county && this.props.county !== "") {
             let locationIndex = this.getLocationIndex(this.props.county);
             let qNames = Object.keys(this.state.allFeedback[locationIndex]); 
             chartDataCopy.overallSatisfaction = this.state.allFeedback[locationIndex][qNames[1]];
@@ -146,19 +149,23 @@ export default class Charts extends Component {
         }
     }
     
+    // Removes chart
     removeChart(chartIndex) {
         let chartDataCopy = this.state;
         chartDataCopy.charts.splice(chartIndex, 1);
         this.setState(chartDataCopy);
     }
 
+    // Updates chart
     updateChart(chart, question) {
         let chartDataCopy = this.state;  
         chartDataCopy.charts[chart] = {data: this.state.allFeedback[this.getLocationIndex(this.props.county)][this.state.questionNames[this.state.questionNames.indexOf(question)]], text: this.state.questionNames[this.state.questionNames.indexOf(question)].replace('_', ' ')};
         this.setState(chartDataCopy);    
     }
 
+
     render() {
+        // Options representing the drop down menu the user can choose to display data
         let options = [];
         if (this.props.county.length) {
             for (let j=1; j<7; j++) {
@@ -169,37 +176,38 @@ export default class Charts extends Component {
             }
         }
 
+        // Represents charts that will be displayed to the user. Contains a button that the user can use to delete the chart. 
         let charts = this.state.charts.map( (chart) => {
             return (
-                <div key={this.state.charts.indexOf(chart)}>
+                <div className="chart" key={this.state.charts.indexOf(chart)}>
                     <div>
                         {this.props.county.length > 0 ? <select value={chart.text.replace(' ', '_')} onChange={ (event) => {
                             this.updateChart(this.state.charts.indexOf(chart), event.target.value)
                         }}>{options}</select> : <div></div>}
                     </div>
-                    <div className="input-group-append">
+                    {this.props.county.length > 0 ? <div className="input-group-append">
                         <button type="button" className="btn btn-danger" onClick={ () => this.removeChart(this.state.charts.indexOf(chart))}>
-                        <span className="fa fa-times" aria-label="remove"></span>
+                            <span className="fa fa-times" aria-label="remove"></span>
                         </button>
-                    </div>
+                    </div> : <div></div>}
                     <Chart chartData={[chart.data]} text={chart.text} />
                 </div>);
         });
         
-        // render based on whether or not there is a county. maybe wrap the analytics in a separate. setting new county will rerender the charts. 
         let stateCopy = this.state;
+        // Returns the charts to be displayed on the application. When the user presses the add chart button, a new 
+        // chart is rendered. Add chart is only displayed when the user has inputted a county.
         return (
             <div id="charts">
                 <div id="charts-header">
-                    <button id="add-chart" onClick={ () => {
+                {this.props.county.length > 0 ? <button id="add-chart" onClick={ () => {
                         stateCopy.charts.push({data: this.state.overallSatisfaction, text: 'Overall Experience'});
                         this.setState(stateCopy);
                     }}>Add Chart</button>
+                    : <div></div>}
                 </div>
                 <div id="charts-container">
-                    {/* <div className="chart"> */}
-                     {this.state.charts.length > 0 ? charts : <div></div>}
-                    {/* </div> */}
+                    {this.state.charts.length > 0 ? charts : <div></div>}
                 </div> 
             </div>
         );

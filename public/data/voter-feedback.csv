@@ -1,32 +1,32 @@
-PollingLocationName	AddressLine	Q1Response	Overall_Experience	Wait_Time	Registration	Service	Timeframe	Resources	Comments
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	4	4	5	3	4	4	Experience could've been better.
-Frank Fire Department	"699 N US HWY 19E 
-Newland, NC 28657 "	General	4	3	5	2	4	3	Overall decent.
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	5	4	2	3	1	1	Very rude representatives.
-Boiling Springs Town Hall	"114 E College Ave 
-Shelby, NC 28152 "	General	2	4	5	2	4	3	Overall decent.
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	3	4	2	2	2	2	Weather conditions made this unpleasurable.
-Chadbourn Municipal Annex	"208 E 1ST Ave 
-Chadbourn, NC 28431 "	General	3	3	5	2	4	3	Wish the line wasn't so long!
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	1	2	2	2	4	3	Experience could've been better.
-Caney Fork Fire Department	"4201 Caney Fork RD 
-Cullowhee, NC 28723 "	General	5	4	5	3	4	4	Overall decent.
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	4	2	3	2	4	4	Very rude representatives.
-Ceder Grove Ruritan Building	"6116 Efland-Ceder Grove RD 
-Cedar Grove, NC 27231 "	General	4	3	4	3	4	4	Wish the line wasn't so long!
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	2	3	2	2	2	2	Weather conditions made this unpleasurable.
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	1	2	2	2	4	3	Wish the line wasn't so long!
-Clement Civic Center	"3402 Maxwell RD  Autryville, NC 28318"	General	4	4	4	3	4	4	Overall decent.
-Bras-Civic Community Building	"255 Settawig RD  Brasstown, NC 28902"	General	4	4	4	3	4	4	Very rude representatives.
-Shiloh Volunteer Fire Dept	"19170 US Hwy 421 
-Willard, NC 28478 "	General	3	4	4	3	4	4	Wish the line wasn't so long!
-Bonlee Fire Department	"185 Bonlee Bennett RD  Bonlee, NC 27213"	General	5	4	4	3	4	3	Weather conditions made this unpleasurable.
-Faith American Legion Building	"1015 Gantt St  Faith, NC 28041"	General	4	3	4	3	3	3	Wish the line wasn't so long!
-Cedar Mountain Community Center	"10635 Greenville Hwy Cedar Mountain, NC 28718"	General	4	3	4	2	3	3	Overall decent.
-Angier Elementary School Gymnasium	"130 E Mciver St  Angier, NC 27501"	General	4	3	4	2	3	4	Very rude representatives.
-Agricultural Center	"707 Pinehurst Ave Carthage, NC 28327"	General	5	4	4	2	3	4	Wish the line wasn't so long!
-Justice Fire Department	"4113 N C Hwy 581 Spring Hope, NC 27882"	General	4	4	3	2	3	4	Weather conditions made this unpleasurable.
-Rocky Hock - R H Rescue Squad Building	"1414 Rocky Hock Landing Rd  Edenton, Nc 27932 "	General	3	4	3	2	4	3	Wish the line wasn't so long!
-Old Olive Hill School Gym	"3856 Semora Rd Roxboro, NC 27574"	General	4	5	3	3	4	3	Wish the line wasn't so long!
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	4	2	3	2	4	4	Weather conditions made this unpleasurable.
-Central Senior Center	"2008 Forest Ave, Des Moines, IA 50311"	General	4	2	3	2	3	5	Wish the line wasn't so long!
+County,AddressLine,Q1Response,Overall_Experience,Convenience,Timely_Ballot,Online_Voting,Timeframe,Resources,Comments
+Adams,"2008 Forest Ave, Des Moines, WA 98105",General,4,4,5,3,4,4,The process was easy!
+Clark,"699 N US HWY 19E 
+Newland, NC 28657",General,4,3,5,2,4,3,Overall decent.
+Pierce,"2008 Forest Ave, Des Moines, WA 98105",General,5,4,2,3,1,1,Please bring online voting!
+Pierce,"114 E College Ave 
+Shelby, NC 28152",General,2,4,5,2,4,3,Overall decent.
+Pierce,"2008 Forest Ave, Des Moines, WA 98105",General,3,4,2,2,2,2,The process was easy!
+King,"208 E 1ST Ave 
+Chadbourn, NC 28431",General,3,3,5,2,4,3,It wasn’t very convenient
+Pierce,"2008 Forest Ave, Des Moines, WA 98072",General,1,2,2,2,4,3,Experience could've been better.
+King,"4201 Caney Fork RD 
+Cullowhee, WA 28723",General,5,4,5,3,4,4,Overall decent.
+Pierce,"2008 Forest Ave, Des Moines, WA 98072",General,4,2,3,2,4,4,The process was easy!
+King,"6116 Efland-Ceder Grove RD 
+Cedar Grove, NC 27231",General,4,3,4,3,4,4,It wasn’t very convenient
+King,"2008 Forest Ave, Des Moines, WA 50311",General,2,3,2,2,2,2,The process was easy!
+Pierce,"2008 Forest Ave, Des Moines, WA 98072",General,1,2,2,2,4,3,The process was easy!
+Mason,"3402 Maxwell RD  Autryville, WA 28318",General,4,4,4,3,4,4,Overall decent.
+Pierce,"255 Settawig RD  Brasstown, WA 28902",General,4,4,4,3,4,4,Very rude representatives.
+Ferry,"19170 US Hwy 421 
+Willard, WA 28478",General,3,4,4,3,4,4,It wasn’t very convenient
+Mason,"185 Bonlee Bennett RD  Bonlee, WA 98072",General,5,4,4,3,4,3,The process was easy!
+Mason,"1015 Gantt St  Faith, NC 28041",General,4,3,4,3,3,3,It wasn’t very convenient
+King,"10635 Greenville Hwy Cedar Mountain, WA 98072",General,4,3,4,2,3,3,Overall decent.
+Pierce,"130 E Mciver St  Angier, WA 27501",General,4,3,4,2,3,4,It wasn’t very convenient
+King,"707 Pinehurst Ave Carthage, WA 28327",General,5,4,4,2,3,4,The process was easy!
+Pierce,"4113 N C Hwy 581 Spring Hope, WA 27882",General,4,4,3,2,3,4,It wasn’t very convenient
+King,"1414 Rocky Hock Landing Rd  Edenton, WA 27932",General,3,4,3,2,4,3,The process was easy!
+Pierce,"3856 Semora Rd Roxboro, WA 27574",General,4,5,3,3,4,3,The process was easy!
+King,"2008 Forest Ave, Des Moines, WA 50311",General,4,2,3,2,4,4,The process was easy!
+Pierce,"2008 Forest Ave, Des Moines, WA 50311",General,4,2,3,2,3,5,Wish the line wasn't so long!
