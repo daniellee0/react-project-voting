@@ -125,7 +125,7 @@ export class MyMap extends Component {
   render() {
       let mapViewport = {
         center: [47.3511, -120.7401],
-        zoom: 7
+        zoom: 6
       }
 
       let legend = 
