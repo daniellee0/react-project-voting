@@ -19,6 +19,14 @@ export class MyMap extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      targetYear: nextProps.year,
+      targetFocus: nextProps.focus,
+      targetAge: nextProps.age
+    })
+  }
+
   componentDidUpdate(prevProps) {
     if(this.props.year !== prevProps.year || this.props.age !== prevProps.age || this.props.focus !== prevProps.focus){
       this.setState((currentState, currentProps) => {
@@ -94,7 +102,7 @@ export class MyMap extends Component {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
     let displayedText = `<h2>${this.state.targetFocus}</h2>` +  
       '<b>' + feature.properties.name + " County" + '</b><br />' + (Math.round(specificCountyData[0][`${this.state.targetFocus}`] * 100) + "%")
-      + ` of ${this.state.targetAge} year olds` + ` in ${this.state.targetYear}`;
+      + ' of ' + this.state.targetAge + ' year olds' + ` in ${this.state.targetYear}`;
     layer.on({
       mouseover: function(event) {
         // layer.setStyle({

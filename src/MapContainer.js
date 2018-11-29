@@ -8,7 +8,7 @@ export class MapContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-          targetYear: 2016,
+          targetYear: 2008,
           targetFocus: 'Total Registered Population',
           targetAge: '18-24'
         };
@@ -47,13 +47,13 @@ export class MapContainer extends Component {
             </select>
 
             <select onChange={ (event) => this.clickAge(event.target.value)}>
-                <option value="18-24" >18-24</option>
-                <option value="25-34" >25-34</option>
-                <option value="35-44" >35-44</option>
-                <option value="45-54" >45-54</option>
-                <option value="55-64" >55-64</option>
-                <option value="65-" >65+</option>
-                <option value="0TOTAL" >All</option>
+                <option value="18-24">18-24</option>
+                <option value="25-34">25-34</option>
+                <option value="35-44">35-44</option>
+                <option value="45-54">45-54</option>
+                <option value="55-64">55-64</option>
+                <option value="65-">65+</option>
+                <option value="0TOTAL">All</option>
             </select>
 
             <select onChange={ (event) => this.clickFocus(event.target.value)}>
