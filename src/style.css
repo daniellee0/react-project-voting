@@ -259,6 +259,8 @@ td label {
 #map-container {
   width: 500px;
   height: 500px;
+  margin-left: 5rem;
+  margin-top: 2rem;
 }
 
 .info {
@@ -282,6 +284,11 @@ td label {
   opacity: 0.7;
 }
 
+/* #map-container{
+  display: flex;
+  justify-content: left;
+} */
+
 /* .legend li span{
   margin-left: 1rem;
   display: inline-block;
@@ -301,11 +308,18 @@ td label {
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
+  #map-container {
+    margin-left: 18rem;
+  }
 }
 
 @media (min-width: 1300px) {
   .cards {
       flex-direction: row;
+  }
+  #map-container {
+    margin-left: 29rem;
   }
 
 }
