@@ -37,48 +37,30 @@ export class MapContainer extends Component {
 
     render() {
         let buttons = 
-        <ButtonToolbar>
-            <DropdownButton
-                bsStyle="primary"
-                bsSize="large"
-                title="Year"
-                id="dropdown-age"
-                noCaret
-            >
-            <MenuItem eventKey="2008" onSelect={this.clickYear}>2008</MenuItem>
-            <MenuItem eventKey="2010" onSelect={this.clickYear}>2010</MenuItem>
-            <MenuItem eventKey="2012" onSelect={this.clickYear}>2012</MenuItem>
-            <MenuItem eventKey="2014" onSelect={this.clickYear}>2014</MenuItem>
-            <MenuItem eventKey="2016" onSelect={this.clickYear}>2016</MenuItem>
-            </DropdownButton>
+        <div>
+            <select onChange={ (event) => this.clickYear(event.target.value)}>
+                <option value="2008">2008</option>
+                <option value="2010">2010</option>
+                <option value="2012">2012</option>
+                <option value="2014">2014</option>
+                <option value="2016">2016</option>
+            </select>
 
-            <DropdownButton
-                bsStyle="primary"
-                bsSize="large"
-                title="Age"
-                id="dropdown-age"
-                noCaret
-            >
-            <MenuItem eventKey="18-24" onSelect={this.clickAge}>18-24</MenuItem>
-            <MenuItem eventKey="25-34" onSelect={this.clickAge}>25-34</MenuItem>
-            <MenuItem eventKey="35-44" onSelect={this.clickAge}>35-44</MenuItem>
-            <MenuItem eventKey="45-54" onSelect={this.clickAge}>45-54</MenuItem>
-            <MenuItem eventKey="55-64" onSelect={this.clickAge}>55-64</MenuItem>
-            <MenuItem eventKey="65-" onSelect={this.clickAge}>65+</MenuItem>
-            <MenuItem eventKey="0TOTAL" onSelect={this.clickAge}>All</MenuItem>
-            </DropdownButton>
+            <select onChange={ (event) => this.clickAge(event.target.value)}>
+                <option value="18-24" >18-24</option>
+                <option value="25-34" >25-34</option>
+                <option value="35-44" >35-44</option>
+                <option value="45-54" >45-54</option>
+                <option value="55-64" >55-64</option>
+                <option value="65-" >65+</option>
+                <option value="0TOTAL" >All</option>
+            </select>
 
-            <DropdownButton
-                bsStyle="primary"
-                bsSize="large"
-                title="Focus"
-                id="dropdown-age"
-                noCaret
-            >
-            <MenuItem eventKey="Total Registered Population" onSelect={this.clickFocus}>Registered Population</MenuItem>
-            <MenuItem eventKey="Total Voter Turnout" onSelect={this.clickFocus}>Voter Turnout</MenuItem>
-            </DropdownButton>
-        </ButtonToolbar>
+            <select onChange={ (event) => this.clickFocus(event.target.value)}>
+                <option value="Total Registered Population">Registered Population</option>
+                <option value="Total Voter Turnout">Voter Turnout</option>
+            </select>
+        </div>
         ;
         console.log(this.state.targetAge);
         return (
