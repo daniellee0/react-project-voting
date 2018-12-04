@@ -17,7 +17,8 @@ export class MyMap extends Component {
       allData: [],
       targetYear: props.year,
       targetFocus: props.focus,
-      targetAge: props.age
+      targetAge: props.age,
+      countyInfoPopup: ''
     };
   }
 
@@ -106,18 +107,17 @@ export class MyMap extends Component {
   onEachFeature = (feature, layer) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
     let targetFocus = Math.round(specificCountyData[0][this.state.targetFocus] * 100);
-    let displayedText = `<h2>${this.state.targetFocus}</h2><b>${feature.properties.name} County</b>
-                        <br />${targetFocus}% of ${this.state.targetAge} year olds in ${this.state.targetYear}`;
-    
+    let displayedText = <div>
+      <h2>{this.state.targetFocus}</h2> <b>{feature.properties.name} County</b> <br />{targetFocus}% of {this.state.targetAge} year olds in {this.state.targetYear}
+    </div>;
+
     // Apply layer
     layer.on({
-      mouseover: function(event) {
-        L.popup()
-            .setLatLng(event.latlng)
-            .setContent(displayedText)
-            .openOn(layer._map);
+      mouseover: (event) => {
+        this.setState({countyInfoPopup: displayedText});
       },
     });
+
   }
 
   // Render Map component. Contains the map and legend as well. 
@@ -156,6 +156,11 @@ export class MyMap extends Component {
             <Control position="bottomright">
               <div>
                 {legend}
+              </div>
+            </Control>
+            <Control position="topright">
+              <div className='info legend'>
+                {this.state.countyInfoPopup}
               </div>
             </Control>
           </Map>
