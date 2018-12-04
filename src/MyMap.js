@@ -48,6 +48,7 @@ export class MyMap extends Component {
 
   // Is called when the component is mounted. Retrieves geojson data.
   componentDidMount() {
+    this.mapRef = this.refs.map.leafletElement; //Add instance variable to be able to reference to map later on 
     //Retrieve geojson data for county boundaries on the map and pass to state
     fetch('data/combined.geo.json')
       .then(response => {
@@ -87,7 +88,7 @@ export class MyMap extends Component {
       opacity: 1,
       color: 'white',
       dashArray: '3',
-      fillOpacity: 0.7
+      fillOpacity: 0.8
     };
   }
 
@@ -117,6 +118,9 @@ export class MyMap extends Component {
         </div>;
         this.setState({countyInfoPopup: displayedText});
       },
+      click: (event) => {
+        this.mapRef.fitBounds(layer.getBounds()); //Zooms to county clicked on
+      }
     });
 
   }
@@ -142,12 +146,12 @@ export class MyMap extends Component {
 
       // Returns a map that contains a legend and and the map itself. This data is layered over the initial tile layer.
       return (
-          <Map id="map" viewport={mapViewport} style={{ height: '470px' }}>
+          <Map ref="map" id="map" viewport={mapViewport} style={{ height: '470px' }}>
             <TileLayer
               url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
               attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-              minZoom='1'
-              maxZoom='18'
+              minZoom='2'
+              maxZoom='20'
               id='mapbox.streets'
             />
             {this.state.data.length > 0 ? 
