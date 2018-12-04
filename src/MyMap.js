@@ -103,17 +103,18 @@ export class MyMap extends Component {
                 '#C7E5D7';
   }
 
-  //Applies the popup
+  //Applies the Control popup
   onEachFeature = (feature, layer) => {
-    let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
-    let targetFocus = Math.round(specificCountyData[0][this.state.targetFocus] * 100);
-    let displayedText = <div>
-      <h2>{this.state.targetFocus}</h2> <b>{feature.properties.name} County</b> <br />{targetFocus}% of {this.state.targetAge} year olds in {this.state.targetYear}
-    </div>;
 
-    // Apply layer
+    // Adds popup information and text to the state, so it may be called and in render()
     layer.on({
       mouseover: (event) => {
+        let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
+        let targetFocus = Math.round(specificCountyData[0][this.state.targetFocus] * 100);
+        let displayedText = 
+        <div>
+          <h2>{this.state.targetFocus}</h2> <b>{feature.properties.name} County</b> <br />{targetFocus}% of {this.state.targetAge} year olds in {this.state.targetYear}
+        </div>;
         this.setState({countyInfoPopup: displayedText});
       },
     });
