@@ -142,6 +142,9 @@ class HomePage extends Component {
     if(!this.state.user) { //if logged out, show signup form
       content = (
         <div className="container">
+          {this.state.errorMessage &&
+            <p className="alert alert-danger">{this.state.errorMessage}</p>
+          }
           <SignUpForm 
             signUpCallback={(e,p,h,a) => this.handleSignUp(e,p,h,a)} 
             signInCallback={(e,p) => this.handleSignIn(e,p)} 
