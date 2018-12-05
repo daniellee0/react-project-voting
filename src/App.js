@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'leaflet/dist/leaflet.css';
 import {} from './style.css';
+import 'react-rangeslider/lib/index.css';
+
 
 import React, { Component } from 'react';
 import Header from './Header';
@@ -11,6 +13,7 @@ import Analytics from './Analytics';
 import Footer from './Footer';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import About from './About';
+import Justices from './Justices'
 
 // Component App that represents the main application and routes to the homepage and about page
 // depending on what the user chooses in the navigation bar. Defaults to the home page
@@ -23,6 +26,9 @@ export default class App extends Component {
                     <Switch>
                         <Route exact path='/home' component={HomePage} />
                         <Route path='/about' component={About} />
+                        <Route path='/justices' render={(props) => {
+                            return <Justices {...props} courtData={this.props.courtData}/>
+                        }}/>
                         <Route component={HomePage} /> 
                     </Switch>
                 </div>

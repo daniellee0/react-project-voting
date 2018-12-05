@@ -23,6 +23,7 @@ class Buttons extends Component {
       <div id="banner-buttons">
         <Link to="/home#get-started" role="button" id="start-button">Get Started</Link>
         <Link to="/about" role="button" id="learn-button">Learn More</Link>
+        <Link to="/justices" role="button" id="learn-button">Justices</Link>
       </div>
     );
   }
