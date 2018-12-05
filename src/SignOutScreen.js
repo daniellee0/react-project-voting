@@ -11,7 +11,11 @@ class SignOutScreen extends Component {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
-          firebase.auth().signOut();
+          firebase.auth().signOut().then(() => {
+            window.setTimeout(() => {
+              window.location.href = "/"
+            }, 2000);
+          })
         } else {
           // No user is signed in.
         }
@@ -19,10 +23,8 @@ class SignOutScreen extends Component {
 
     return (
         <div>
-            <p>You signed out!</p>
-            <p>This page is a temporary placeholder until I get this looking nicer.</p>
-            <p>For now, to get back to the sign in page, just update the URL in the browser back to '/'. You should be logged out and can sign back in/register a new account now.</p>
-            {/* <Link to='/'>Click here to return to the sign-in screen</Link> */}
+            <h1>You have signed out</h1>
+            <p>You will be redirected to the sign-in page in 2 seconds.</p>
         </div>
     )
   }
