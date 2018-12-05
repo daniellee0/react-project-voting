@@ -10,6 +10,7 @@ class SignUpForm extends Component {
       'email': undefined,
       'password': undefined
     }; 
+
   }
 
   //update state for specific field
@@ -35,44 +36,48 @@ class SignUpForm extends Component {
   }
 
   render() {
-    return (
-      <form>
-        {/* email */}
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input className="form-control" 
-            id="email" 
-            type="email" 
-            name="email"
-            onChange={(e) => this.handleChange(e)}
-            />
-        </div>
-        
-        {/* password */}
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input className="form-control" 
-            id="password" 
-            type="password"
-            name="password"
-            onChange={(e) => this.handleChange(e)}
-            />
-        </div>
 
-        {/* buttons */}
-        <div className="form-group">
-          <button className="btn btn-primary mr-2" 
-            onClick={(e) => this.handleSignUp(e)}
-          >
-            Sign-up
-          </button>
-          <button className="btn btn-primary"
-            onClick={(e) => this.handleSignIn(e)}
-          >
-            Sign-in
-          </button>
-        </div>
-      </form>
+    return (
+      <div className="container">
+        <h1>Sign Up</h1>
+        <form>
+            {/* email */}
+            <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input className="form-control"
+                id="email"
+                type="email"
+                name="email"
+                onChange={(e) => this.handleChange(e)}
+                />
+            </div>
+            
+            {/* password */}
+            <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input className="form-control"
+                id="password"
+                type="password"
+                name="password"
+                onChange={(e) => this.handleChange(e)}
+                />
+            </div>
+            
+            {/* buttons */}
+            <div className="form-group">
+                <button className="btn btn-primary mr-2"
+                    onClick={(e) => this.handleSignUp(e)}
+                    >
+                    Sign-up
+                </button>
+                <button className="btn btn-primary"
+                    onClick={(e) => this.handleSignIn(e)}
+                    >
+                    Sign-in
+                </button>
+            </div>
+        </form>
+    </div>
     )
   }
 }

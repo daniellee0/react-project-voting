@@ -12,6 +12,7 @@ import Footer from './Footer';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import About from './About';
 import SignUpForm from './SignUpForm.js';
+import SignOutScreen from './SignOutScreen.js';
 import firebase from 'firebase/app';
 
 // Component App that represents the main application and routes to the homepage and about page
@@ -25,6 +26,8 @@ export default class App extends Component {
                     <Switch>
                         <Route exact path='/home' component={HomePage} />
                         <Route path='/about' component={About} />
+                        <Route path='/signin' component={SignUpForm} />
+                        <Route path='/signout' component={SignOutScreen} />
                         <Route component={HomePage} /> 
                     </Switch>
                 </div>
@@ -45,7 +48,7 @@ class HomePage extends Component {
         };
     }
 
-    //A callback function for registering new users
+  //A callback function for registering new users
   handleSignUp(email, password, handle, avatar) {
     this.setState({errorMessage:null}); //clear any old errors
     firebase.auth().createUserWithEmailAndPassword(email,password)
@@ -133,7 +136,6 @@ class HomePage extends Component {
     if(!this.state.user) { //if logged out, show signup form
       content = (
         <div className="container">
-          <h1>Sign Up</h1>
           <SignUpForm 
             signUpCallback={(e,p,h,a) => this.handleSignUp(e,p,h,a)} 
             signInCallback={(e,p) => this.handleSignIn(e,p)} 

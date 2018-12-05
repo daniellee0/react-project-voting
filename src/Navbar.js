@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
+import firebase from 'firebase/app';
 
 import {
     Collapse,
@@ -27,6 +28,7 @@ export default class NavbarFeatures extends Component {
         });
     }
 
+
     // Renders the navigation bar with options to navigate to Home, About, and to get started. 
     render() {
         return (
@@ -43,6 +45,9 @@ export default class NavbarFeatures extends Component {
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="/home#get-started">Get Started</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={Link} to="/signout">Sign Out</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
