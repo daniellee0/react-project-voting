@@ -20,6 +20,8 @@ class SignOutScreen extends Component {
     return (
         <div>
             <p>You signed out!</p>
+            <p>This page is a temporary placeholder until I get this looking nicer.</p>
+            <p>For now, to get back to the sign in page, just update the URL in the browser back to '/'. You should be logged out and can sign back in/register a new account now.</p>
             {/* <Link to='/'>Click here to return to the sign-in screen</Link> */}
         </div>
     )
