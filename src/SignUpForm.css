@@ -5,3 +5,8 @@
   margin-right: .5em;
   margin-bottom: .5em;
 }
+
+.flex-container {
+  justify-content: center;
+  width: 50%;
+}

@@ -1,16 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; //import React Component
+import 'font-awesome/css/font-awesome.min.css';
+import "./Footer.scss"
 
-// Component representing the footer of the web application. This includes contact information and copyrights
-export default class Footer extends Component {
-    // Renders the Footer component
+export class Footer extends Component {
     render() {
         return (
-            <div>
-                <p></p>
-                <p>© 2018 Kyle Avalani, Daniel Lee</p>
-                <p>You can contact Kyle via email <a href="mailto:kyleavalani@gmail.com">here</a>.</p>
-                <p>You can contact Daniel via email <a href="mailto:daleewa@gmail.com">here</a>.</p>
-            </div>
-        );
+            <footer>
+                <p>Contact us! E-mail for serious inquires</p>
+                <a href="mailto:votefact340@gmail.com" rel="noopener noreferrer" target="_blank" ><i className="fa fa-envelope-o fa-2x" alt="email link"></i></a>
+                <p>&copy; Copyright 2018 Kyle Avalani, Daniel Lee, Andrea Koozer, Hilton Vo</p>
+                <p>Data from Kaggle: <a href="https://www.kaggle.com/umichigan/court-justices"><i className="fa fa-database fa-2x" alt="data source link"></i></a> 
+                    &nbsp;&nbsp;&nbsp;and the Secretary of State: <a href="https://www.sos.wa.gov/elections/research/data-and-statistics.aspx"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i></a>
+                </p>
+            </footer>
+        )
     }
 }
+
+export default Footer;

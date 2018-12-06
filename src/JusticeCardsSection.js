@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JusticeCard from './JusticeCard';
-import { Grid, Row, Alert, ButtonToolbar, ToggleButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Grid, Row, Alert } from 'react-bootstrap';
 
 //Component that renders all of the current Justices at the beginning of the application
 export default class JusticeCardsSection extends Component {
@@ -92,13 +92,27 @@ export default class JusticeCardsSection extends Component {
                 <br/>
                 
                 {/* Renders a group of three buttons */}
-                <ButtonToolbar>
-                    <ToggleButtonGroup type="radio" name="options" defaultValue={3} onChange={this.handleChange}>
-                        <ToggleButton id="republican" value={1}><h3 id="h3">Republican Justices</h3></ToggleButton>
-                        <ToggleButton id="democrat" value={2}><h3 id="h3">Democratic Justices</h3></ToggleButton>
-                        <ToggleButton id="neutral" value={3}><h3 id="h3">All Justices</h3></ToggleButton>
-                    </ToggleButtonGroup>
-                </ButtonToolbar>
+                <div className="btn-group">
+                    <Grid>
+                        <Row>
+                            <button id="republican" value={1} onClick={ () => {
+                                    this.setState({ value: 1 })
+                                }}>
+                                <h3 id="h3">Republican Justices</h3>
+                            </button>
+                            <button id="democrat" value={2} onClick={ () => {
+                                    this.setState({ value: 2 })
+                                }}>
+                                <h3 id="h3">Democratic Justices</h3>
+                            </button>
+                            <button id="neutral" value={3} onClick={ () => {
+                                    this.setState({ value: 3 })
+                                }}>
+                                <h3 id="h3">All Justices</h3>
+                            </button>
+                        </Row>
+                    </Grid>
+                </div>
 
                 <br/>
 

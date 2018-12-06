@@ -41,7 +41,7 @@ export default class NavbarFeatures extends Component {
                             <NavLink tag={Link} to="/">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={Link} to="/about">About</NavLink>
+                            <NavLink tag={Link} to="/">About</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="/home#get-started">Get Started</NavLink>

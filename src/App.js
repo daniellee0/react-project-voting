@@ -6,7 +6,6 @@ import 'react-rangeslider/lib/index.css';
 
 import React, { Component } from 'react';
 import Header from './Header';
-import Introduction from './Introduction';
 import Start from './Start';
 import Form from './Form';
 import Analytics from './Analytics';
@@ -158,7 +157,12 @@ class HomePage extends Component {
         <div>
             <div id="main">
                 <Header />
+<<<<<<< HEAD
                 <Introduction />
+=======
+                <About />
+                <Start county={this.state.currentCounty} adoptCallback={ (countyName) => this.chooseCounty(countyName)}/>
+>>>>>>> 876cbc7818db80d2f83c0e71c59461ea2f1e5fcb
                 <Form />
                 <Footer />
             </div>
