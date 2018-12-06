@@ -50,7 +50,8 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentCounty: ""
+            currentCounty: "",
+            feedback: []
         };
     }
 
@@ -158,9 +159,7 @@ class HomePage extends Component {
             <div id="main">
                 <Header />
                 <Introduction />
-                <Start county={this.state.currentCounty} adoptCallback={ (countyName) => this.chooseCounty(countyName)}/>
                 <Form />
-                <Analytics county={this.state.currentCounty}/>
                 <Footer />
             </div>
         </div>

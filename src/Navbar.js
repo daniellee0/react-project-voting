@@ -50,6 +50,9 @@ export default class NavbarFeatures extends Component {
                             <NavLink tag={Link} to ="/justices">Justices</NavLink>
                         </NavItem>
                         <NavItem>
+                            <NavLink tag={Link} to ="/form">Form</NavLink>
+                        </NavItem>
+                        <NavItem>
                             <NavLink tag={Link} to="/signout">Sign Out</NavLink>
                         </NavItem>
                     </Nav>
