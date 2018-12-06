@@ -7,7 +7,7 @@ export default class About extends Component {
     // Renders the About component that contains information about the web app and also contains a navigation bar.
     render() {
       return (
-        <div id="about">
+        <div id="intro"className="about">
             <section className="about">
                 <div className="content-container">
                     <AboutContent />
@@ -24,17 +24,15 @@ export default class About extends Component {
 class AboutContent extends Component {
     render() {
         return (
-            <div>
-                <h1>About</h1>
-
+            <div id="aboutContent">
                 <div className="cards">
                     <div>
                         <i className="fas fa-pencil-alt fa-3x"></i>
-                        <p>Take the time to leave a meaningful review about your voting experience. Whether you're on the go, or at home, VoteFact provides you with access anywhere and everywhere.</p>
+                        <p>Leave a meaningful review about your voting experience. Whether you're on the go, or at home, VoteFact provides you with access everywhere.</p>
                     </div>
                     <div>
                         <i className="far fa-user fa-3x"></i>                    
-                        <p>Review analytics about voter satisfaction in your local county. Government entities can utilize this data to develop comprehensive solutions in regard to voting.</p>
+                        <p>Review analytics about voter satisfaction in your local county. Government entities can utilize this data to develop comprehensive solutions</p>
                     </div>
                     <div>
                         <i className="fas fa-chart-bar fa-3x"></i>
@@ -47,27 +45,15 @@ class AboutContent extends Component {
                 </div>
 
                 <p>
-                    With the 2018 Midterm Election fast approaching, the importance of registering to vote is
+                    &nbsp;&nbsp;&nbsp;&nbsp; With the 2018 Midterm Election fast approaching, the importance of registering to vote is
                     as crucial as ever. Like all elections,
                     this Midterm election is important. However, with 
-                    an <a href="http://www.people-press.org/2017/10/05/the-partisan-divide-on-political-values-grows-even-wider/">increasingly partisan divide</a>
+                    an <a href="http://www.people-press.org/2017/10/05/the-partisan-divide-on-political-values-grows-even-wider/">increasingly partisan divide </a> 
                     widening between Democrats and Republicans, this election takes special importance.
-                    Currently, the Republicans control the House, Senate, executive branch and with
-                    the recent appointment of Kavanaugh, now the Judiciary branch as well. This Midterm
-                    provides Democrats with a chance to take the House and potentially even the Senate,
-                    and is an critical battle for Republicans if they want to remain in control.
                 </p>
 
                 <p>
-                    Many voters struggle with recognizing the value of their vote. A common sentiment is
-                    "How does my one vote matter?". While it may not seem like your individual vote can make the 
-                    difference, if everyone shared that sentiment, then it truly wouldn't matter! Additionally, 
-                    with races sometimes coming down right to the line, a few votes can make all the difference.
-                    Senator Bernie Sanders once won a mayoral election by a margin of just <a href="https://en.wikipedia.org/wiki/Burlington_mayoral_election,_1981">10 votes</a>.
-                </p>
-
-                <p>
-                    With the flood of "fake news" and overall false information during the 2016
+                    &nbsp;&nbsp;&nbsp;&nbsp; With the flood of "fake news" and overall false information during the 2016
                     Presidential Election, it's clear that many Americans feel there's an abundance
                     of false information circulating around the Internet. Providing Americans with
                     facts is vital in ensuring people vote responsibly and with the proper 
@@ -82,11 +68,11 @@ class AboutContent extends Component {
                 </p>
 
                 <h2>Project Data:</h2>
-                <div className="cards">
+                <div className="cards datacards">
                     <div>
                         <i className="fa fa-gavel fa-3x"></i>
                         <p>
-                            Supreme Court ideology data (1937 - 2015) from the Universtiy of Michigan can be viewed 
+                            Supreme Court ideology data (1937 - 2015) from the University of Michigan can be viewed 
                             <a href="https://www.kaggle.com/umichigan/court-justices"> here</a>.
                         </p>
                     </div>
@@ -95,7 +81,7 @@ class AboutContent extends Component {
                         <p>
                             Voter Registration data from the WA Secretary of State can be
                              viewed <a href="https://www.sos.wa.gov/elections/research/data-and-statistics.aspx">here </a>
-                            in the "Voter Participation Excel Spreadsheet".
+                            under "Voter Participation".
                         </p>
                     </div>
                 </div>

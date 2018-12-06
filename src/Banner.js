@@ -8,7 +8,7 @@ export default class Banner extends Component {
         // Made up of the main banner and navigating buttons
         <div id="banner">
             <h1><Link to="/home">VoteFact</Link></h1>
-            <p>A review and analytics platform for voters to learn about turnout and leave reviews</p>
+            <p>A review and analytics platform for voters to learn and track justices, voter turnout, and leave feedback</p>
             <Buttons />
         </div>
       );

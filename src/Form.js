@@ -35,7 +35,7 @@ export default class Form extends Component {
         return (
             <div id="form">
                 <h2>Feedback Form</h2>
-                <p>Answer the following questions about your voting experience</p>
+                <p>Anonymously answer the following questions about your voting experience</p>
                 <p>Survey Scale: 1=Very Poor, 5=Very Good</p>
                 <Table adoptCallback={(value, type) => this.updateFeedback(value, type)}/>
                 <div id="submit-feedback">
@@ -49,31 +49,9 @@ export default class Form extends Component {
 // Table component that represents the main feedback form. Users can choose multiple choice options
 // and then submit the form.
 class Table extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {feedback: []};
-    }
-
-    // this is for the table
-    componentDidMount() {
-        this.feedbackRef = firebase.database().ref('feedback');
-        this.feedbackRef.on('value', (snapshot) => {
-            let feedback = snapshot.val();
-            feedback = Object.keys(feedback).map( (key => {
-                let response = feedback[key];
-                return response;
-            }));
-            this.setState({feedback: feedback});
-        });
-    }
-
-    componentWillUnmount() {
-        this.feedbackRef.off();
-    }
 
     // Renders the main feedback form (Table).
     render() {
-        console.log(this.state.feedback); 
         let callBack = this.props.adoptCallback;
         return(
             <table>

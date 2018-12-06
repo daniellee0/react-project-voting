@@ -106,9 +106,12 @@ header {
 
 
 /* INTRODUCTION */
-#introduction {
-  position: relative;
+#intro {
   top: -7rem;
+}
+
+.about {
+  position: relative;
 }
 
 .content-container div {
@@ -142,7 +145,7 @@ header {
 }
 
 #begin-button {
-  background-color: rgb(204, 51, 0);
+  background-color: rgb(197, 74, 32);
   font-size: 1.2rem;
   border-radius: 5px;
   color: white;
@@ -185,6 +188,7 @@ header {
 
 #form {
   margin-top: 2rem;
+  font-size: 1.2rem;
 }
 
 #form p {
@@ -327,8 +331,12 @@ td label {
 
 /* ABOUT */
 
-#about #home-button a {
+.about #home-button a {
   color: black;
+}
+
+#aboutContent > p{
+  text-align: left;
 }
 
 /* Slider */
@@ -464,7 +472,11 @@ td label {
 
 @media (min-width: 1300px) {
   .cards {
-      flex-direction: row;
+    flex-direction: row;
+  }
+
+  .datacards {
+    flex-grow: 5;
   }
 
   #map {
