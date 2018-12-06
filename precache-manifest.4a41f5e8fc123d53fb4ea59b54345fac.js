@@ -1,10 +1,10 @@
 self.__precacheManifest = [
   {
-    "revision": "fee66e712a8a08eef5805a46892932ad",
-    "url": "/react-project-voting/static/media/fontawesome-webfont.fee66e71.woff"
+    "revision": "af7ae505a9eed503f8b8e6982036873e",
+    "url": "/react-project-voting/static/media/fontawesome-webfont.af7ae505.woff2"
   },
   {
-    "revision": "599e4a4ee2c3b93b3941",
+    "revision": "8404a6a6935aeca1877d",
     "url": "/react-project-voting/static/css/main.f2e298d1.chunk.css"
   },
   {
@@ -24,20 +24,20 @@ self.__precacheManifest = [
     "url": "/react-project-voting/static/media/cityscape2.b8d6ff1e.jpg"
   },
   {
-    "revision": "599e4a4ee2c3b93b3941",
-    "url": "/react-project-voting/static/js/main.599e4a4e.chunk.js"
-  },
-  {
-    "revision": "af7ae505a9eed503f8b8e6982036873e",
-    "url": "/react-project-voting/static/media/fontawesome-webfont.af7ae505.woff2"
-  },
-  {
-    "revision": "b06871f281fee6b241d60582ae9369b9",
-    "url": "/react-project-voting/static/media/fontawesome-webfont.b06871f2.ttf"
+    "revision": "8404a6a6935aeca1877d",
+    "url": "/react-project-voting/static/js/main.8404a6a6.chunk.js"
   },
   {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
     "url": "/react-project-voting/static/media/fontawesome-webfont.674f50d2.eot"
+  },
+  {
+    "revision": "fee66e712a8a08eef5805a46892932ad",
+    "url": "/react-project-voting/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  {
+    "revision": "b06871f281fee6b241d60582ae9369b9",
+    "url": "/react-project-voting/static/media/fontawesome-webfont.b06871f2.ttf"
   },
   {
     "revision": "912ec66d7572ff821749319396470bde",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/react-project-voting/static/css/1.1dde0922.chunk.css"
   },
   {
-    "revision": "b771d7f2eafe1fbda1f847bd4734c047",
+    "revision": "f1a53d7d5e99ea6883c2e0a5b27e4fd1",
     "url": "/react-project-voting/index.html"
   }
 ];

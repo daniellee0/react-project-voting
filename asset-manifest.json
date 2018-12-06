@@ -1,18 +1,18 @@
 {
   "main.css": "/react-project-voting/static/css/main.f2e298d1.chunk.css",
-  "main.js": "/react-project-voting/static/js/main.599e4a4e.chunk.js",
-  "main.js.map": "/react-project-voting/static/js/main.599e4a4e.chunk.js.map",
+  "main.js": "/react-project-voting/static/js/main.8404a6a6.chunk.js",
+  "main.js.map": "/react-project-voting/static/js/main.8404a6a6.chunk.js.map",
   "static/css/1.1dde0922.chunk.css": "/react-project-voting/static/css/1.1dde0922.chunk.css",
   "static/js/1.8d7b5485.chunk.js": "/react-project-voting/static/js/1.8d7b5485.chunk.js",
   "static/js/1.8d7b5485.chunk.js.map": "/react-project-voting/static/js/1.8d7b5485.chunk.js.map",
   "runtime~main.js": "/react-project-voting/static/js/runtime~main.5fdec97a.js",
   "runtime~main.js.map": "/react-project-voting/static/js/runtime~main.5fdec97a.js.map",
   "static/media/style.css": "/react-project-voting/static/media/cityscape2.b8d6ff1e.jpg",
-  "static/media/font-awesome.min.css": "/react-project-voting/static/media/fontawesome-webfont.fee66e71.woff",
+  "static/media/font-awesome.min.css": "/react-project-voting/static/media/fontawesome-webfont.af7ae505.woff2",
   "static/media/scores.csv": "/react-project-voting/static/media/scores.04d2db7f.csv",
-  "static/css/1.1dde0922.chunk.css.map": "/react-project-voting/static/css/1.1dde0922.chunk.css.map",
   "static/css/main.f2e298d1.chunk.css.map": "/react-project-voting/static/css/main.f2e298d1.chunk.css.map",
+  "static/css/1.1dde0922.chunk.css.map": "/react-project-voting/static/css/1.1dde0922.chunk.css.map",
   "index.html": "/react-project-voting/index.html",
-  "precache-manifest.159b8ff1df733d77c8fc8baac30f3a35.js": "/react-project-voting/precache-manifest.159b8ff1df733d77c8fc8baac30f3a35.js",
+  "precache-manifest.4a41f5e8fc123d53fb4ea59b54345fac.js": "/react-project-voting/precache-manifest.4a41f5e8fc123d53fb4ea59b54345fac.js",
   "service-worker.js": "/react-project-voting/service-worker.js"
 }
