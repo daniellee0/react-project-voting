@@ -39,7 +39,7 @@ class AboutContent extends Component {
                         <p>Analyze Washington State voter registration and turnout data through an interactive map. Filter by year and age to see how the data changes.</p>
                     </div>
                     <div>
-                        <i className="fa fa-university fa-3x"></i>
+                        <i className="fa fa-gavel fa-3x"></i>
                         <p>Your votes affect who gets put on the Supreme Court! Review analytics about the ideologies of Supreme Court Justices.</p>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ class AboutContent extends Component {
                         </p>
                     </div>
                     <div>
-                        <i className="fa fa-check-square fa-3x"></i>
+                        <i className="fa fa-university fa-3x"></i>
                         <p>
                             Voter Registration data from the WA Secretary of State can be
                              viewed <a href="https://www.sos.wa.gov/elections/research/data-and-statistics.aspx">here </a>
