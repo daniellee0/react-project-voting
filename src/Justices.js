@@ -23,7 +23,7 @@ export default class Justices extends Component {
                 </section>
             </div>
         );
-      }
+    }
 }
 
 // Component that introduces the ideology scores

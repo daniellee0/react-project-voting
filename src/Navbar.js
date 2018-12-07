@@ -8,7 +8,8 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink} from 'reactstrap';
+    NavLink,
+    NavbarBrand} from 'reactstrap';
 
 // Comonent representing the navigation bar so the user can navigate the web application.
 export default class NavbarFeatures extends Component {
@@ -33,24 +34,22 @@ export default class NavbarFeatures extends Component {
     render() {
         return (
             <nav>
-                <Navbar color="transparent" dark={this.props.dark} light={this.props.light} expand="md">
+                <Navbar dark={this.props.dark} light={this.props.light} expand="md">
+                <NavbarBrand tag={Link} to="/">VoteFact</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} className="mr-2" aria-label="Navbar Toggle"/>
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav navbar>
-                        <NavItem id="home-button">
-                            <NavLink tag={Link} to="/">Home</NavLink>
-                        </NavItem>
-                        <NavItem>
+                    <Nav navbar className="ml-auto">
+                        <NavItem >
                             <NavLink tag={Link} to="/">About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={Link} to="/home#get-started">Get Started</NavLink>
+                            <NavLink tag={Link} to="/votefeedback">Feedback</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to ="/justices">Justices</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={Link} to="/signout">Sign Out</NavLink>
+                            <NavLink id="signout" tag={Link} to="/signout">Sign Out</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>

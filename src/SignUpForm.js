@@ -38,7 +38,7 @@ class SignUpForm extends Component {
   render() {
 
     return (
-      <div className="container">
+      <div className="container" id="sign-in">
         <div className="flex-container">
           <h1>Sign Up</h1>
           <form>

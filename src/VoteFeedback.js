@@ -1,0 +1,48 @@
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import { HashLink as Link } from 'react-router-hash-link';
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    Nav,
+    NavItem,
+    NavLink} from 'reactstrap';
+import NavbarFeatures from './Navbar';
+import Start from './Start';
+import Form from './Form';
+import Analytics from './Analytics';
+import Footer from './Footer';
+
+
+
+export default class VoteFeedback extends Component {
+
+
+    // County state is used to share the county state between the Start component and the Analytics component
+    // in order to render the chart. 
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentCounty: ""
+        };
+    }
+
+    // Takes in county name parameter to change the state county
+    chooseCounty(countyName) {
+        this.setState({currentCounty: countyName});
+    }
+
+
+    render() {
+        return (
+            <div>
+                <NavbarFeatures dark={false} light={true} />
+                <Start county={this.state.currentCounty} adoptCallback={ (countyName) => this.chooseCounty(countyName)}/>
+                <Form />
+                <Analytics county={this.state.currentCounty}/>
+                <Footer />
+            </div>
+        );
+    }
+}

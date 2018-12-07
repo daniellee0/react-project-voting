@@ -45,9 +45,9 @@ p {
 
 /* NAVIGATION */
 
-#home-button a {
+/* #home-button a {
   color: white;
-}
+} */
 
 /* HEADER/BANNER */
 header {
@@ -90,9 +90,12 @@ header {
 
 
 /* INTRODUCTION */
-#introduction {
-  position: relative;
+#intro {
   top: -7rem;
+}
+
+.about {
+  position: relative;
 }
 
 .content-container div {
@@ -126,7 +129,7 @@ header {
 }
 
 #begin-button {
-  background-color: rgb(204, 51, 0);
+  background-color: rgb(197, 74, 32);
   font-size: 1.2rem;
   border-radius: 5px;
   color: white;
@@ -169,6 +172,7 @@ header {
 
 #form {
   margin-top: 2rem;
+  font-size: 1.2rem;
 }
 
 #form p {
@@ -181,6 +185,7 @@ table {
   margin-right: 30px;
 }
 
+
 td {
   padding: 1rem;
   display: table-row;
@@ -189,14 +194,17 @@ td {
 
 td input {
   margin-left: 3px;
-} */
+} 
 
 tr {
-  height: 100px;
+  height: 120px;
+  /* padding-top: 10rem */
+
 } 
 
 td label {
   margin-left: 1rem;
+  margin-right: .2rem;
 }
 
 .form-labels {
@@ -241,6 +249,10 @@ td label {
   flex: 0 1 auto;
   min-width: initial;
   margin: auto;
+}
+
+.legend ul li span {
+  margin-right: .3rem;
 }
 
 /* MAP */
@@ -309,9 +321,29 @@ td label {
   background-color: #3EBEBF;
 }
 
+#legend6 {
+  background-color: #164074;
+}
+
+#legend7 {
+  background-color: #CF2E29;
+}
+
+#legend8 {
+  background-color: #A9AAAD;
+}
+
+#legend9 {
+  background-color: #2ba031;
+}
+
+#legend10 {
+  background-color: #a02b2b;
+}
+
 /* ABOUT */
 
-#about #home-button a {
+.about #home-button a {
   color: black;
 }
 
@@ -339,6 +371,9 @@ td label {
 .btn-group button:hover {
   background-color: rgb(217, 217, 217);
   color: black;
+}
+#aboutContent > p{
+  text-align: left;
 }
 
 /* Slider */
@@ -419,13 +454,6 @@ td label {
 }
 
 @media (min-width: 875px) {
-  td {
-      display: table-cell;
-  }
-
-  tr td:nth-child(2) {
-      text-align: right;
-  }
 
   #map {
     width: 700px;
@@ -436,7 +464,15 @@ td label {
   }
 }
 
+@media (min-width: 905px) {
+  td {
+    display: table-cell;
+  }
 
+  tr td:nth-child(2) {
+      text-align: right;
+  }
+}
   
 @media (min-width: 900px) {
   h1 {
@@ -478,7 +514,11 @@ td label {
 
 @media (min-width: 1300px) {
   .cards {
-      flex-direction: row;
+    flex-direction: row;
+  }
+
+  .datacards {
+    flex-grow: 5;
   }
 
   #map {
@@ -489,3 +529,7 @@ td label {
     width: 1000px;
   }
 }
+
+/* #signout {
+  right: 500px;
+} */

@@ -10,7 +10,7 @@ export default class Banner extends Component {
         // Made up of the main banner and navigating buttons
         <div id="banner">
             <h1><Link to="/home">VoteFact</Link></h1>
-            <p>A review and analytics platform for voters to learn about turnout and leave reviews</p>
+            <p>A review and analytics platform for voters to learn and track justices, voter turnout, and leave feedback</p>
             <Buttons />
         </div>
       );
@@ -23,8 +23,8 @@ class Buttons extends Component {
   render() {
     return(
       <div id="banner-buttons">
-        <Link to="/home#get-started" role="button" id="start-button">Get Started</Link>
-        <Link to="/" role="button" id="learn-button">Learn More</Link>
+        <Link to="/votefeedback" role="button" id="start-button">Feedback</Link>
+        {/* <Link to="/" role="button" id="learn-button">Learn More</Link> */}
         <Link to="/justices" role="button" id="learn-button">Justices</Link>
       </div>
     );
