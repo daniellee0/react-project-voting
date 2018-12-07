@@ -98,6 +98,10 @@ header {
   position: relative;
 }
 
+.infographic {
+  max-width: 100%;
+  width: auto;
+}
 .content-container div {
   border-radius: 5px;
   background-color: white;
