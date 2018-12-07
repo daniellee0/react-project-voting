@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JusticeCard from './JusticeCard';
-import { Grid, Row, Alert } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 
 //Component that renders all of the current Justices at the beginning of the application
 export default class JusticeCardsSection extends Component {
@@ -75,10 +75,10 @@ export default class JusticeCardsSection extends Component {
             <div>
                 <div>
                     <h2 id="h2">Change in Ideology of Current Justices</h2>
-                    <Alert id="p" bsStyle="warning">
+                    <p id="alert">
                         Note: Justices Neil Gorsuch and Brett Kavanaugh are not listed under current justices because the dataset that provides the
                         "Martin-Quinn" scores only goes until 2015.
-                    </Alert>
+                    </p>
                     <p id="p">
                         Developed by Andrew D. Martin (University of Michigan, College of Literature, Science, and the Arts) and Kevin M. Quinn 
                         (Department of Political Science, University of Michigan), "Martin-Quinn" scores measure each justice's political leanings 

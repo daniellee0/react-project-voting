@@ -27,6 +27,9 @@ export default class JusticeTimeline extends Component {
     render() {
       return (
           <div>
+            <p id="alert" className="mobile">
+                Tilt your mobile device horizontally to make the timeline and graph show up better.
+            </p>
             <h2>Timeline of Ideology</h2>
             <h4>1937 - {this.state.value}</h4>
 

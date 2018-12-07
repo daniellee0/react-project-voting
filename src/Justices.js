@@ -4,6 +4,7 @@ import JusticeCardsSection from './JusticeCardsSection';
 import JusticeTimeline from './JusticeTimeline';
 import CreateTable from './CreateTable';
 import Footer from './Footer';
+import PickJustice from './PickJustice';
 
 // Component that represents all of the charts that use the Justice Ideology Scores
 export default class Justices extends Component {
@@ -14,6 +15,7 @@ export default class Justices extends Component {
                 <section className="about">
                     <div className="content-container">
                         <JusticeContent courtData={this.props.courtData}/>
+                        <PickJustice courtData={this.props.courtData}/>
                         <JusticeTimeline courtData={this.props.courtData} />
                         <CreateTable courtData={this.props.courtData} />
                         <Footer />

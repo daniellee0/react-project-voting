@@ -7,32 +7,6 @@ body {
   width: 100%;
 }
 
-.btn-group button {
-    background-color: grey; /* Green background */
-    border: 1px solid rgb(255, 255, 255); /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-    float: left; /* Float the buttons side by side */
-}
-
-.btn-group button:not(:last-child) {
-    border-right: none; /* Prevent double borders */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-    background-color: rgb(217, 217, 217);
-    color: black;
-}
-
 h1 {
   font-size: 1.8rem;
 }
@@ -57,6 +31,16 @@ p {
   overflow-wrap: break-word;
   font-size: 1.2rem;
   margin-top: 0.5rem;
+}
+
+#alert {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 /* NAVIGATION */
@@ -331,6 +315,32 @@ td label {
   color: black;
 }
 
+/* Button Group for Justices */
+
+.btn-group button {
+  background-color: grey; /* Green background */
+  border: 1px solid rgb(255, 255, 255); /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; 
+}
+
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:hover {
+  background-color: rgb(217, 217, 217);
+  color: black;
+}
+
 /* Slider */
 .slider {
   -webkit-appearance: none;
@@ -371,6 +381,10 @@ td label {
 
   #map-container {
     width: 510px;
+  }
+
+  .mobile {
+    display: none;
   }
 }
 
