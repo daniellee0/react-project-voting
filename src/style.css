@@ -200,7 +200,7 @@ td input {
   margin-left: 3px;
 } 
 
-tr {
+#form tr {
   height: 120px;
   /* padding-top: 10rem */
 
@@ -467,16 +467,6 @@ td label {
     width: 700px;
   }
 }
-
-@media (min-width: 905px) {
-  td {
-    display: table-cell;
-  }
-
-  tr td:nth-child(2) {
-      text-align: right;
-  }
-}
   
 @media (min-width: 900px) {
   h1 {
@@ -489,6 +479,14 @@ td label {
 
   td input {
       margin-left: 1px;
+  }
+
+  td {
+    display: table-cell;
+  }
+
+  tr td:nth-child(2) {
+      text-align: right;
   }
 
   .content-container {
