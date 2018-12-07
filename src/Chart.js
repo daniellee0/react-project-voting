@@ -8,13 +8,17 @@ export default class Chart extends Component {
         super(props);
         this.state = 
             {chartData: this.props.chartData,
-             text: this.props.text};
+             text: this.props.text,
+             labels: this.props.labels,
+             backgroundColor: this.props.backgroundColor};
     }
 
     // Sets data and text of the chart when it receives new props
     componentWillReceiveProps(nextProps) {
         this.setState({chartData: nextProps.chartData,
-            text: nextProps.text});  
+            text: nextProps.text,
+            labels: nextProps.labels,
+            backgroundColor: nextProps.backgroundColor});  
     }
 
     // Returns a single chart
@@ -22,9 +26,9 @@ export default class Chart extends Component {
         return (
             <Pie
                 data = {{
-                    labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
+                    labels: this.state.labels,
                     datasets: [{
-                        backgroundColor: ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'],
+                        backgroundColor: this.state.backgroundColor,
                         data: this.state.chartData[0]
                     }]
                 }}

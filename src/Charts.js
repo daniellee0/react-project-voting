@@ -104,11 +104,16 @@ export default class Charts extends Component {
             let totalResponses = this.getOverallSatisfaction(feedback);
             stateCopy.overallSatisfaction = totalResponses;
             feedback = this.processResponses(feedback);
-            console.log(feedback);
             stateCopy.allFeedback = feedback;
-            stateCopy.charts[0] = ({data: totalResponses, text: 'Overall Satisfaction'});       // Store all charts first? then select which one to display?
+            stateCopy.charts[0] = ({data: totalResponses, text: 'Overall Satisfaction', labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
+                                    backgroundColor: ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF']});       // Store all charts first? then select which one to display?
+            stateCopy.charts[1] = ({data: feedback.mail, text: 'Mail Convenience', labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
+                                    backgroundColor: ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF']}); 
+            stateCopy.charts[2] = ({data: feedback.leaning, text: 'Political Leaning', labels: ["Democrat", "Republican", "Other"],
+                                    backgroundColor: ['#164074', '#CF2E29', '#A9AAAD']}); 
             this.setState(stateCopy);
         });
+            
     }
 
     componentWillUnmount() {
@@ -136,13 +141,34 @@ export default class Charts extends Component {
 
     // Updates chart
     updateChart(chart, question) {
-        let chartDataCopy = this.state;  
-        chartDataCopy.charts[chart] = {data: this.state.allFeedback[question], text: this.state.textNames[this.state.questionNames.indexOf(question)]};
+        let chartDataCopy = this.state; 
+        let newChart = {};
+        if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'leaning') {
+            newChart.labels = ["Democrat", "Republican", "Other"];
+            newChart.backgroundColor = ['#164074', '#CF2E29', '#A9AAAD'];
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'mail') {
+            newChart.labels = ["Very Poor", "Poor", "Fair", "Good", "Very Good"];
+            newChart.backgroundColor = ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'];
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'participation') {
+            newChart.labels = ["Yes", "No"];
+            newChart.backgroundColor = ['#2ba031', '#a02b2b'];
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'online') {
+            newChart.labels = ["Yes", "No"];
+            newChart.backgroundColor = ['#2ba031', '#a02b2b'];
+        } else {
+            newChart.labels = ["Very Poor", "Poor", "Fair", "Good", "Very Good"];
+            newChart.backgroundColor = ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'];
+        }
+        newChart.data = this.state.allFeedback[question];
+        newChart.text = this.state.textNames[this.state.questionNames.indexOf(question)];
+        // chartDataCopy.charts[chart] = {data: this.state.allFeedback[question], text: this.state.textNames[this.state.questionNames.indexOf(question)]};
+        chartDataCopy.charts[chart] = newChart;
         this.setState(chartDataCopy);    
     }
 
 
     render() {
+        // console.log(this.state.questionNames);
         // Options representing the drop down menu the user can choose to display data
         let options = [];
         for (let j=0; j<5; j++) {
@@ -158,10 +184,12 @@ export default class Charts extends Component {
         // );
         
         let charts = this.state.charts.map( (chart) => {
+            console.log(chart.labels);
+            console.log(chart.backgroundColor);
             return (
                 <div className="chart" key={this.state.charts.indexOf(chart)}>
                     <div>
-                        {this.props.county.length > 0 ? <select  onChange={ (event) => {            // value={chart.text}
+                        {this.props.county.length > 0 ? <select onChange={ (event) => {            // value={chart.text}
                             this.updateChart(this.state.charts.indexOf(chart), event.target.value)
                         }}>{options}</select> : <div></div>}
                     </div>
@@ -170,7 +198,7 @@ export default class Charts extends Component {
                             <span className="fa fa-times" aria-label="remove"></span>
                         </button>
                     </div> : <div></div>}
-                    <Chart chartData={[chart.data]} text={chart.text} />
+                    <Chart chartData={[chart.data]} text={chart.text} labels={chart.labels} backgroundColor={chart.backgroundColor}/>
                 </div>);
         });
         
@@ -181,7 +209,9 @@ export default class Charts extends Component {
             <div id="charts">
                 <div id="charts-header">
                 {this.props.county.length > 0 ? <button id="add-chart" onClick={ () => {
-                        stateCopy.charts.push({data: this.state.overallSatisfaction, text: 'Overall Experience'});
+                        stateCopy.charts.push({data: this.state.overallSatisfaction, text: 'Overall Satisfaction', 
+                                               labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
+                                               backgroundColor: ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF']});
                         this.setState(stateCopy);
                     }}>Add Chart</button>
                     : <div></div>}

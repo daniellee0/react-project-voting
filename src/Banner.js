@@ -21,8 +21,8 @@ class Buttons extends Component {
   render() {
     return(
       <div id="banner-buttons">
-        <Link to="/home#get-started" role="button" id="start-button">Get Started</Link>
-        <Link to="/" role="button" id="learn-button">Learn More</Link>
+        <Link to="/votefeedback" role="button" id="start-button">Feedback</Link>
+        {/* <Link to="/" role="button" id="learn-button">Learn More</Link> */}
         <Link to="/justices" role="button" id="learn-button">Justices</Link>
       </div>
     );

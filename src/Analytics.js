@@ -26,13 +26,24 @@ class Legend extends Component {
     // Renders the Legend component
     render() {
         return (
-            <ul className="0-legend">
-                <li><span id="legend1"></span>Very Poor</li>
-                <li><span id="legend2"></span>Poor</li>
-                <li><span id="legend3"></span>Fair</li>
-                <li><span id="legend4"></span>Good</li>
-                <li><span id="legend5"></span>Very Good</li>
-            </ul>
+            <div>
+                <ul className="0-legend">
+                    <li><span id="legend1"></span>Very Poor</li>
+                    <li><span id="legend2"></span>Poor</li>
+                    <li><span id="legend3"></span>Fair</li>
+                    <li><span id="legend4"></span>Good</li>
+                    <li><span id="legend5"></span>Very Good</li>
+                </ul>
+                <ul className="0-legend">
+                    <li><span id="legend6"></span>Democrat</li>
+                    <li><span id="legend7"></span>Republican</li>
+                    <li><span id="legend8"></span>Other</li>
+                </ul>
+                <ul className="0-legend">
+                    <li><span id="legend9"></span>Yes</li>
+                    <li><span id="legend10"></span>No</li>
+                </ul>
+            </div>
         );
     }
 }

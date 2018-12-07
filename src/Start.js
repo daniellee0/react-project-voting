@@ -26,7 +26,9 @@ class StartForm extends Component {
 
     // Changes the county state of the App component.
     handleChange(event) {
+        let callBack = this.props.adoptCallback;
         this.setState({county: event.target.value});
+        callBack(this.state.county);
     }
 
     render() {
@@ -42,9 +44,9 @@ class StartForm extends Component {
                     <label className="form-labels" htmlFor="address">Address</label>
                     <input aria-label="Input Address" type="text" name="address" id="address" placeholder="Address" />
                 </div> */}
-                <div>
+                {/* <div>
                     <button aria-label="Begin" type="button" id="begin-button" onClick={ () => callBack(this.state.county)}>Begin</button>
-                </div>
+                </div> */}
             </form>
         );
     }

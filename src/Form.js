@@ -24,8 +24,8 @@ export default class Form extends Component {
           mail: this.state.mail,
           online: this.state.online
         };
-        /* TODO: add a new Chirp to the database */
-        this.chirps = firebase.database().ref('feedback').push(newFeedback);
+        
+        this.feedback = firebase.database().ref('feedback').push(newFeedback);
     
         this.setState({leaning: '', satisfaction: '', participation: '', mail: '', online: ''}); //empty out post for next time
     }

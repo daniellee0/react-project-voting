@@ -6,13 +6,11 @@ import 'react-rangeslider/lib/index.css';
 
 import React, { Component } from 'react';
 import Header from './Header';
-import Start from './Start';
-import Form from './Form';
-import Analytics from './Analytics';
 import Footer from './Footer';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import About from './About';
 import Justices from './Justices'
+import VoteFeedback from './VoteFeedback'
 import SignUpForm from './SignUpForm.js';
 import SignOutScreen from './SignOutScreen.js';
 import firebase from 'firebase/app';
@@ -31,6 +29,7 @@ export default class App extends Component {
                         <Route path='/justices' render={(props) => {
                             return <Justices {...props} courtData={this.props.courtData}/>
                         }}/>
+                        <Route path='/votefeedback' component={VoteFeedback} />
                         <Route path='/signin' component={SignUpForm} />
                         <Route path='/signout' component={SignOutScreen} />
                         <Route component={HomePage} /> 
@@ -49,7 +48,7 @@ class HomePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentCounty: ""
+            
         };
     }
 
@@ -121,12 +120,6 @@ class HomePage extends Component {
         this.authUnRegFunc();
     }
 
-
-    // Takes in county name parameter to change the state county
-    chooseCounty(countyName) {
-        this.setState({currentCounty: countyName});
-    }
-
     // Renders the HomePage component. Contains the Header, Introduction, Start Form, Main feedback form, Analytics
     // Section, and footer. 
     render() {
@@ -157,9 +150,6 @@ class HomePage extends Component {
                 <div id="main">
                     <Header />
                     <About />
-                    <Start county={this.state.currentCounty} adoptCallback={ (countyName) => this.chooseCounty(countyName)}/>
-                    <Form />
-                    <Analytics county={this.state.currentCounty}/>
                     <Footer />
                 </div>
             </div>
