@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import NavbarFeatures from './Navbar';
+import NavbarFeatures from '../About/Navbar';
 import JusticeCardsSection from './JusticeCardsSection';
 import JusticeTimeline from './JusticeTimeline';
 import CreateTable from './CreateTable';
-import Footer from './Footer';
+import Footer from '../About/Footer'
 import PickJustice from './PickJustice';
 
 // Component that represents all of the charts that use the Justice Ideology Scores

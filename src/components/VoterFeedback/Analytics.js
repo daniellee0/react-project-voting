@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { MapContainer } from './MapContainer';
-import Charts from './Charts';
+import { MapContainer } from './Map/MapContainer';
+import Charts from './Charts/Charts';
 
 // Component that represents the analytics section that contains both the charts and map.
 export default class Analytics extends Component {

@@ -1,18 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'leaflet/dist/leaflet.css';
-import {} from './style.css';
+import {} from './components/style.css';
 import 'react-rangeslider/lib/index.css';
 
 
 import React, { Component } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './components/About/Header';
+import Footer from './components/About/Footer';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import About from './About';
-import Justices from './Justices'
-import VoteFeedback from './VoteFeedback'
-import SignUpForm from './SignUpForm.js';
-import SignOutScreen from './SignOutScreen.js';
+import About from './components/About/About';
+import Justices from './components/Justices/Justices'
+import VoteFeedback from './components/VoterFeedback/VoteFeedback'
+import SignUpForm from './components/signup/SignUpForm';
+import SignOutScreen from './components/signup/SignOutScreen';
 import firebase from 'firebase/app';
 
 // Component App that represents the main application and routes to the homepage and about page

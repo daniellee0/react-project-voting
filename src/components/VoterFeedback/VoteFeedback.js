@@ -8,11 +8,11 @@ import {
     Nav,
     NavItem,
     NavLink} from 'reactstrap';
-import NavbarFeatures from './Navbar';
+import NavbarFeatures from '../About/Navbar';
 import Start from './Start';
 import Form from './Form';
 import Analytics from './Analytics';
-import Footer from './Footer';
+import Footer from '../About/Footer';
 
 
 
