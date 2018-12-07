@@ -17,18 +17,15 @@ export default class PickJustice extends Component {
 
     //Sets the data from Firebase in the state when the page loads
     componentDidMount() {
-        let chirpsRef = firebase.database().ref("Justices")
-
-        chirpsRef.on("value", (snapshot) => {
+        let justiceRef = firebase.database().ref("Justices")
+        justiceRef.on("value", (snapshot) => {
             if (snapshot.val() != null) {
-                this.setState({ value: Object.values(snapshot.val()) })
-            
+                this.setState({ value: Object.values(snapshot.val()) });
                 for (var i = 0; i < Object.values(snapshot.val()).length; i++) {
                     let name = Object.values(snapshot.val())[i]
                     let key = Object.keys(snapshot.val())[i]
                     this.state.keys[name] = key
                 }
-
             }
         })
       }

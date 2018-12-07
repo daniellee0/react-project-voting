@@ -32,7 +32,6 @@ class StartForm extends Component {
     }
 
     render() {
-        let callBack = this.props.adoptCallback;
         return (
             <form>
                 <div id="name-input">

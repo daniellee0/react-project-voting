@@ -166,12 +166,10 @@ class SignUpForm extends Component {
       } 
       else { //if logged in, show welcome message
         content = (
-          <div>
-              <div id="main">
-                <Header />
-                <About />
-                <Footer />
-              </div>
+          <div id="main">
+            <Header />
+            <About />
+            <Footer />
           </div>
         );
       }

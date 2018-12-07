@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as Papa from 'papaparse';
 import firebase from 'firebase/app';
 import Chart from './Chart';
+
 // Component representing the container for all charts to render
 export default class Charts extends Component {
     // Takes in a county prop representing the county the user has chosen.
@@ -143,16 +143,16 @@ export default class Charts extends Component {
     updateChart(chart, question) {
         let chartDataCopy = this.state; 
         let newChart = {};
-        if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'leaning') {
+        if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'leaning') {
             newChart.labels = ["Democrat", "Republican", "Other"];
             newChart.backgroundColor = ['#164074', '#CF2E29', '#A9AAAD'];
-        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'mail') {
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'mail') {
             newChart.labels = ["Very Poor", "Poor", "Fair", "Good", "Very Good"];
             newChart.backgroundColor = ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'];
-        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'participation') {
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'participation') {
             newChart.labels = ["Yes", "No"];
             newChart.backgroundColor = ['#2ba031', '#a02b2b'];
-        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] == 'online') {
+        } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'online') {
             newChart.labels = ["Yes", "No"];
             newChart.backgroundColor = ['#2ba031', '#a02b2b'];
         } else {

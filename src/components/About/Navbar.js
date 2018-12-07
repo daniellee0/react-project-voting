@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import firebase from 'firebase/app';
 
 import {
     Collapse,
@@ -39,9 +38,6 @@ export default class NavbarFeatures extends Component {
                 <NavbarToggler onClick={this.toggle} className="mr-2" aria-label="Navbar Toggle"/>
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav navbar className="ml-auto">
-                        <NavItem >
-                            <NavLink tag={Link} to="/">About</NavLink>
-                        </NavItem>
                         <NavItem>
                             <NavLink tag={Link} to="/votefeedback">Feedback</NavLink>
                         </NavItem>

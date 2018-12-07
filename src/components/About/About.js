@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavbarFeatures from './Navbar';
 
 // About component that represents information about the web application and is separate from the homepage.
 // The user can navigate to this page to learn more about the web application. 

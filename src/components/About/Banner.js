@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-import { Grid, Row, Alert } from 'react-bootstrap';
 
 
 // Component representing the banner of the web app

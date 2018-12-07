@@ -1,6 +1,5 @@
 import React, { Component } from 'react'; //import React Component
 import firebase from 'firebase/app';
-import {Link} from 'react-router-dom';
 
 import './SignUpForm.css'; //load module CSS
 

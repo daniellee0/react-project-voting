@@ -21,7 +21,7 @@ export default class JusticeTimeline extends Component {
             courtData: this.props.courtData.filter( (obj) => {
                 return obj.court_term >= 1937 && obj.court_term <= this.state.value;
             })
-          })
+        });
     }
    
     render() {
@@ -87,8 +87,6 @@ export default class JusticeTimeline extends Component {
                 obj.y = justiceFilter[k].posterior_mean;
                 posteriorMeans.push(obj);
             }
-            
-
             dataArray.push(createData(posteriorMeans, justiceFilter[0].justice_name, colorArray[j]));
         }
         
@@ -98,7 +96,6 @@ export default class JusticeTimeline extends Component {
         }
 
         return dataArray;
-
     }
 
     //Creates an array of the court terms (this is used for the x-axis labels)

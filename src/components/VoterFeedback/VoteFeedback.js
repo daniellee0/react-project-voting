@@ -1,13 +1,4 @@
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import React, { Component } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    Nav,
-    NavItem,
-    NavLink} from 'reactstrap';
 import NavbarFeatures from '../About/Navbar';
 import Start from './Start';
 import Form from './Form';
