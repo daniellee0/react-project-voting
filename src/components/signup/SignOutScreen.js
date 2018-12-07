@@ -24,7 +24,7 @@ class SignOutScreen extends Component {
     return (
         <div>
             <h1>You have signed out</h1>
-            <p>You will be redirected to the sign-in page in 2 seconds.</p>
+            <p>You will be redirected to the home page in 2 seconds.</p>
         </div>
     )
   }
