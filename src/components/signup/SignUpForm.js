@@ -5,7 +5,6 @@ import Header from '../About/Header';
 import Footer from '../About/Footer';
 import About from '../About/About';
 
-
 import './SignUpForm.css'; //load module CSS
 
 class SignUpForm extends Component {
@@ -16,27 +15,26 @@ class SignUpForm extends Component {
       'email': undefined,
       'password': undefined
     }; 
-
   }
 
     //A callback function for registering new users
     handleSignUp(email, password, handle, avatar) {
       this.setState({errorMessage:null}); //clear any old errors
       firebase.auth().createUserWithEmailAndPassword(email,password)
-          .then( (createdUser) => (
-          createdUser.user.updateProfile({
-              displayName: handle,
-              photoURL: avatar
-          }).catch( (e) => {
-              this.setState({
-              errorMessage: e.message
-              });
-          })
-          ).catch( (e) => {
-          this.setState({
-              errorMessage: e.message
-          });
-          })
+        .then( (createdUser) => (
+        createdUser.user.updateProfile({
+            displayName: handle,
+            photoURL: avatar
+        }).catch( (e) => {
+            this.setState({
+            errorMessage: e.message
+            });
+        })
+        ).catch( (e) => {
+        this.setState({
+            errorMessage: e.message
+        });
+        })
       ).catch( (e) => {
           this.setState({
           errorMessage: e.message
@@ -46,38 +44,38 @@ class SignUpForm extends Component {
 
     //A callback function for logging in existing users
     handleSignIn(email, password) {
-        this.setState({errorMessage:null}); //clear any old errors
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch( (e) => {
-            this.setState({
-                errorMessage: e.message
-            });
-            });
+      this.setState({errorMessage:null}); //clear any old errors
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .catch( (e) => {
+          this.setState({
+              errorMessage: e.message
+          });
+        });
     }
 
     //A callback function for logging out the current user
     handleSignOut(){
       this.setState({errorMessage:null}); //clear any old errors
       firebase.auth().signOut()
-          .catch( (e) => {
-          this.setState({
-              errorMessage: e.message
-          });
+        .catch( (e) => {
+        this.setState({
+            errorMessage: e.message
+        });
       });
     }
 
     componentDidMount(){
       this.authUnRegFunc = firebase.auth().onAuthStateChanged( (user) => {
-          if (user) {
-          this.setState({
-              user: user,
-              loading: false
-          })
-          } else {
-          this.setState({
-              user: null
-          })
-          }
+        if (user) {
+        this.setState({
+            user: user,
+            loading: false
+        })
+        } else {
+        this.setState({
+            user: null
+        })
+        }
       }); 
     }
 
@@ -162,7 +160,7 @@ class SignUpForm extends Component {
         </div>
       );
       } 
-      else { //if logged in, show welcome message
+      else { //if logged in, show main page
         content = (
           <div id="main">
             <Header />

@@ -86,12 +86,13 @@ export class MyMap extends Component {
     });
   }
 
+  //Adding style for the specific county the user enters in the form
   getSpecificCountyData = () => {
     let countyGeoJSON = this.state.geojsondata.features.filter(obj => obj.properties.name === this.props.county);
     return countyGeoJSON; 
   }
 
-  //Function for adding style to the geojson data of the map
+  //Adding style to the geojson data of the map
   addStyle = (feature) => {
     let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
     return {
@@ -151,81 +152,76 @@ export class MyMap extends Component {
   // Render Map component. Contains the map and legend as well. 
   render() {
 
-      let mapViewport = {
-        center: [47.3511, -120.7401],
-        zoom: 6
-      }
-
-      let legend = 
-        <div className='info legend'>
-          <i style={{background:"#C7E5D7"}}></i>0-30%<br></br>
-          <i style={{background:"#9DD1B9"}}></i>30-40%<br></br>
-          <i style={{background:"#81C4A5"}}></i>40-50%<br></br>
-          <i style={{background:"#65B891"}}></i>50-60%<br></br>
-          <i style={{background:"#539777"}}></i>60-70%<br></br>
-          <i style={{background:"#41765D"}}></i>70-80%<br></br>
-          <i style={{background:"#2E5442"}}></i>80-90%<br></br>
-          <i style={{background:"#1C3328"}}></i>90+%<br></br>
-        </div>;
-
-      // Returns a map that contains a legend and and the map itself. This data is layered over the initial tile layer.
-      return (
-          <Map ref="map" id="map" viewport={mapViewport} style={{ height: '470px' }}>
-            <TileLayer
-              url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
-              attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-              minZoom='2'
-              maxZoom='20'
-              id='mapbox.streets'
-            />
-            {this.state.data.length > 0 ? 
-            <div>
-              <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
-            
-              {this.state.listOfCounties ? 
-              this.state.listOfCounties.includes(this.props.county) ?
-                <GeoJSON ref="geojson2" key={hash(this.props.county)} data={this.getSpecificCountyData()} style={this.addSpecificStyling} onEachFeature={this.onEachFeature.bind(this)}/>
-              :
-              <div />
-            :
-            <div />}
-            
-            </div>
-            : 
-            <div />}
-
-            <Control position="bottomright">
-              <div>
-                {legend}
-              </div>
-            </Control>
-            <Control position="topright">
-              <div className='info legend'>
-                {this.state.countyInfoPopup}
-              </div>
-            </Control>
-            <Control position='bottomleft'>
-              
-            {this.state.listOfCounties ? 
-            this.state.listOfCounties.includes(this.props.county) ?
-              <div className='info'>
-                Home County: {this.props.county}
-              </div>
-              :
-              <div className='info'>
-                Enter your Home County in the Form Above
-              </div>
-            :
-            <div/>
-            }
-            
-
-              {/* <div className='info legend'>
-                <p>Home County: {this.props.county}</p>
-              </div> */}
-
-            </Control>
-          </Map>
-      );
+    let mapViewport = {
+      center: [47.3511, -120.7401],
+      zoom: 6
     }
+
+    let legend = 
+      <div className='info legend'>
+        <i style={{background:"#C7E5D7"}}></i>0-30%<br></br>
+        <i style={{background:"#9DD1B9"}}></i>30-40%<br></br>
+        <i style={{background:"#81C4A5"}}></i>40-50%<br></br>
+        <i style={{background:"#65B891"}}></i>50-60%<br></br>
+        <i style={{background:"#539777"}}></i>60-70%<br></br>
+        <i style={{background:"#41765D"}}></i>70-80%<br></br>
+        <i style={{background:"#2E5442"}}></i>80-90%<br></br>
+        <i style={{background:"#1C3328"}}></i>90+%<br></br>
+      </div>;
+
+    // Returns a map that contains a legend and and the map itself. This data is layered over the initial tile layer.
+    return (
+      <Map ref="map" id="map" viewport={mapViewport} style={{ height: '470px' }}>
+        <TileLayer
+          url='https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3lsZWF2YWxhbmkiLCJhIjoiY2pvdzd3NGtzMGgxMjNrbzM0cGhwajRxNyJ9.t8zAjKz12KLZQ8GLp2hDFQ'
+          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+          minZoom='2'
+          maxZoom='20'
+          id='mapbox.streets'
+        />
+        {this.state.data.length > 0 ? 
+        <div>
+          <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
+        
+          {this.state.listOfCounties ? 
+          this.state.listOfCounties.includes(this.props.county) ?
+            <GeoJSON ref="geojson2" key={hash(this.props.county)} data={this.getSpecificCountyData()} style={this.addSpecificStyling} onEachFeature={this.onEachFeature.bind(this)}/>
+          :
+          <div />
+        :
+        <div />}
+        
+        </div>
+        : 
+        <div />}
+
+        <Control position="bottomright"> {/* Legend popup */}
+          <div>
+            {legend}
+          </div>
+        </Control>
+        <Control position="topright"> {/* Main County Information popup */}
+          <div className='info legend'>
+            {this.state.countyInfoPopup}
+          </div>
+        </Control>
+        <Control position='bottomleft'> {/* Home County popup on map */}
+          
+        {this.state.listOfCounties ? 
+        this.state.listOfCounties.includes(this.props.county) ?
+          <div className='info'>
+            Home County: {this.props.county}
+          </div>
+          :
+          <div className='info'>
+            Enter your Home County in the Form Above
+          </div>
+        :
+        <div/>
+        }
+        
+        </Control>
+      </Map>
+    );
   }
+}

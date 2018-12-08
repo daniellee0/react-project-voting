@@ -8,23 +8,23 @@ class SignOutScreen extends Component {
   render() {
 
     firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          // User is signed in.
-          firebase.auth().signOut().then(() => {
-            window.setTimeout(() => {
-              window.location.href = "/"
-            }, 2000);
-          })
-        } else {
-          // No user is signed in.
-        }
-      });
+      if (user) {
+        // User is signed in. Bring them back to the main page
+        firebase.auth().signOut().then(() => {
+          window.setTimeout(() => {
+            window.location.href = "/"
+          }, 2000);
+        })
+      } else {
+        // No user is signed in.
+      }
+    });
 
     return (
-        <div>
-            <h1>You have signed out</h1>
-            <p>You will be redirected to the home page in 2 seconds.</p>
-        </div>
+      <div>
+          <h1>You have signed out</h1>
+          <p>You will be redirected to the home page in 2 seconds.</p>
+      </div>
     )
   }
 }
