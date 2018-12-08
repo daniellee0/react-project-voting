@@ -7,7 +7,7 @@ import 'react-rangeslider/lib/index.css';
 import React, { Component } from 'react';
 import Header from './components/About/Header';
 import Footer from './components/About/Footer';
-import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import About from './components/About/About';
 import Justices from './components/Justices/Justices'
 import VoteFeedback from './components/VoterFeedback/VoteFeedback'
