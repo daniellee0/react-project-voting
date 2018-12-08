@@ -1,6 +1,6 @@
 # VoteFact
 
-# Authors
+## Authors
 Kyle Avalani, Daniel Lee, Andrea Koozer, Hilton Vo
 
 ## About
