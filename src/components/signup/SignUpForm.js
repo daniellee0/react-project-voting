@@ -20,7 +20,7 @@ class SignUpForm extends Component {
   }
 
       //A callback function for registering new users
-      handleSignUpZ(email, password, handle, avatar) {
+      handleSignUp(email, password, handle, avatar) {
         this.setState({errorMessage:null}); //clear any old errors
         firebase.auth().createUserWithEmailAndPassword(email,password)
             .then( (createdUser) => (

@@ -26,13 +26,12 @@ export default class VoteFeedback extends Component {
 
 
     render() {
-        console.log(this.state.currentCounty);
         return (
             <div>
                 <NavbarFeatures dark={false} light={true} />
                 <Start county={this.state.currentCounty} adoptCallback={ (countyName) => this.chooseCounty(countyName)}/>
-                <Form />
-                <Analytics county={this.state.currentCounty}/>
+                <Form adoptCallback={ () => this.submitForm()} />
+                <Analytics county={this.state.currentCounty} />
                 <Footer />
             </div>
         );

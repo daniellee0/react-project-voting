@@ -23,6 +23,7 @@ export default class Chart extends Component {
 
     // Returns a single chart
     render() {
+        console.log(this.state.chartData[0]);
         return (
             <Pie
                 data = {{

@@ -13,7 +13,7 @@ export default class Analytics extends Component {
                     <div id="chart-legend" className="legend">
                         <Legend />
                     </div>
-                    <Charts county={this.props.county}/>
+                    <Charts county={this.props.county} submittedForm={this.props.submittedForm}/>
                     <MapContainer></MapContainer>
                 </div>
             </div>

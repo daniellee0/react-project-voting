@@ -17,8 +17,8 @@ export default class PickJustice extends Component {
 
     //Sets the data from Firebase in the state when the page loads
     componentDidMount() {
-        let justiceRef = firebase.database().ref("Justices")
-        justiceRef.on("value", (snapshot) => {
+        this.justiceRef = firebase.database().ref("Justices")
+        this.justiceRef.on("value", (snapshot) => {
             if (snapshot.val() != null) {
                 this.setState({ value: Object.values(snapshot.val()) });
                 for (var i = 0; i < Object.values(snapshot.val()).length; i++) {
@@ -28,7 +28,11 @@ export default class PickJustice extends Component {
                 }
             }
         })
-      }
+    }
+
+    componentWillUnmount() {
+        this.justiceRef.off();
+    }
 
     //Creates an array of all the justice names in the time period
     justiceNames = () => {
