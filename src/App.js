@@ -7,7 +7,7 @@ import 'react-rangeslider/lib/index.css';
 import React, { Component } from 'react';
 import Header from './components/About/Header';
 import Footer from './components/About/Footer';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import About from './components/About/About';
 import Justices from './components/Justices/Justices'
 import VoteFeedback from './components/VoterFeedback/VoteFeedback'
@@ -23,14 +23,13 @@ export default class App extends Component {
             <Router basename={process.env.PUBLIC_URL+'/'}>
                 <Switch>
                     <Route exact path='/home' component={HomePage} />
-                    <Route exact path='/about' component={About} />
                     <Route exact path='/justices' render={(props) => {
                         return <Justices {...props} courtData={this.props.courtData}/>
                     }}/>
                     <Route exact path='/votefeedback' component={VoteFeedback} />
                     <Route exact path='/signin' component={SignUpForm} />
                     <Route exact path='/signout' component={SignOutScreen} />
-                    <Route component={HomePage} /> 
+                    <Redirect to='/home' />
                 </Switch>
             </Router>
         );
