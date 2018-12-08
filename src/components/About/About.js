@@ -44,7 +44,7 @@ class AboutContent extends Component {
                 </div>
 
                 <p>
-                    &nbsp;&nbsp;&nbsp;&nbsp; With the 2018 Midterm Election fast approaching, the importance of registering to vote is
+                    &nbsp;&nbsp;&nbsp;&nbsp; With the 2018 Midterm Election still in the political spotlight, the importance of registering to vote is
                     as crucial as ever. Like all elections,
                     this Midterm election is important. However, with 
                     an <a href="http://www.people-press.org/2017/10/05/the-partisan-divide-on-political-values-grows-even-wider/">increasingly partisan divide </a> 
