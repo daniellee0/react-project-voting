@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
+import { Alert } from 'reactstrap';
 
 // Component reprsenting the different questions and options the user can select to provide feedback
 export default class Form extends Component {
     constructor(props) {
         super(props);
-        this.state = {leaning: '', satisfaction: '', participation: '', mail: '', online: '', submitted: false};
+        this.state = {leaning: '', satisfaction: '', participation: '', mail: '', online: '', alreadySubmitted: false, successfulSubmit: false};
     }
 
     //when the text in the form changes
@@ -17,20 +18,50 @@ export default class Form extends Component {
 
     postForm(event){
         event.preventDefault(); //don't submit
-        let newFeedback = {
-          leaning: this.state.leaning,
-          satisfaction: this.state.satisfaction,
-          participation: this.state.participation,
-          mail: this.state.mail,
-          online: this.state.online,
-        };
         let user = firebase.auth().currentUser.uid;
-        if (user) {  
-            // console.log(user);
+        let newFeedback = {
+            leaning: this.state.leaning,
+            satisfaction: this.state.satisfaction,
+            participation: this.state.participation,
+            mail: this.state.mail,
+            online: this.state.online,
+            user: user
+        };
+        this.feedbackRef = firebase.database().ref('feedback');
+        let foundUser = false;
+        this.feedbackRef.on('value', (snapshot) => {
+            let feedback = snapshot.val();
+            Object.keys(feedback).forEach( (key) => {
+                if (feedback[key].user === user) {
+                    foundUser = true;
+                }
+            });
+        });
+        let stateCopy = this.state;
+        if (!foundUser) {
+            firebase.database().ref('feedback').push(newFeedback);
+            stateCopy.successfulSubmit = true;
+        } else {
+            stateCopy.alreadySubmitted = true; 
         }
-        this.feedback = firebase.database().ref('feedback').push(newFeedback);
+        this.setState(stateCopy);
+    }
+
     
-        this.setState({leaning: '', satisfaction: '', participation: '', mail: '', online: ''}); //empty out post for next time
+
+    loggedIn = () => {
+        let user = firebase.auth().currentUser;
+        if (user) {
+            return (
+                <div id="submit-feedback">
+                    <button onClick={(e) => this.postForm(e)} form="form">Submit</button>
+                </div>
+            )
+        } else {
+            return (
+                <p>You must be logged in to submit a form!</p>
+            )
+        }
     }
 
     // Renders the Form component. Contains the table that represents the feedback form.
@@ -41,9 +72,12 @@ export default class Form extends Component {
                 <p>Anonymously answer the following questions about your voting experience</p>
                 <p>Survey Scale: 1=Very Poor, 5=Very Good</p>
                 <Table adoptCallback={(value, type) => this.updateFeedback(value, type)}/>
-                <div id="submit-feedback">
+                {this.loggedIn()}
+                {/* <div id="submit-feedback">
                     <button onClick={(e) => this.postForm(e)} form="form">Submit</button>
-                </div>
+                </div> */}
+                {this.state.alreadySubmitted === true ? <Alert color="danger">You already submitted feedback!</Alert> : <div />}
+                {this.state.successfulSubmit === true ? <Alert color="primary">You successfully submitted!</Alert> : <div />}
             </div>
         );
     }
