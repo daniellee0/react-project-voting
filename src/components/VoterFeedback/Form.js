@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 export default class Form extends Component {
     constructor(props) {
         super(props);
-        this.state = {leaning: '', satisfaction: '', participation: '', mail: '', online: ''};
+        this.state = {leaning: '', satisfaction: '', participation: '', mail: '', online: '', submitted: false};
     }
 
     //when the text in the form changes
@@ -22,9 +22,12 @@ export default class Form extends Component {
           satisfaction: this.state.satisfaction,
           participation: this.state.participation,
           mail: this.state.mail,
-          online: this.state.online
+          online: this.state.online,
         };
-        
+        let user = firebase.auth().currentUser.uid;
+        if (user) {  
+            // console.log(user);
+        }
         this.feedback = firebase.database().ref('feedback').push(newFeedback);
     
         this.setState({leaning: '', satisfaction: '', participation: '', mail: '', online: ''}); //empty out post for next time

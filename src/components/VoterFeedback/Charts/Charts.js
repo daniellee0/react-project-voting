@@ -184,8 +184,6 @@ export default class Charts extends Component {
         // );
         
         let charts = this.state.charts.map( (chart) => {
-            console.log(chart.labels);
-            console.log(chart.backgroundColor);
             return (
                 <div className="chart" key={this.state.charts.indexOf(chart)}>
                     <div>

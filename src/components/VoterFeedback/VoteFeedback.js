@@ -26,6 +26,7 @@ export default class VoteFeedback extends Component {
 
 
     render() {
+        console.log(this.state.currentCounty);
         return (
             <div>
                 <NavbarFeatures dark={false} light={true} />
