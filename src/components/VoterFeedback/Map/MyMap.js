@@ -60,7 +60,7 @@ export class MyMap extends Component {
       })
       .then( jsonData => {
         let listLocal = jsonData.features.map( (obj) => {
-            return obj.properties.name
+            return obj.properties.name;
         });
         this.setState({
           geojsondata: jsonData, 
@@ -122,7 +122,7 @@ export class MyMap extends Component {
     return {
       fillColor: this.getColor(specificCountyData[0][this.state.targetFocus]),
       weight: 5,
-      color: '#666',
+      color: '#CB958E',
       dashArray: '',
       fillOpacity: 0.7
     }
