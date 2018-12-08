@@ -12,8 +12,4 @@ to the same form. The second feature allows users to analyze justice ideology. T
 
 This app was bootstrapped with Create React App.
 
-Daniel Lee
-
-Link: https://info340b-a18.github.io/project-daniellee0/
-
-https://github.com/info340b-a18/react-project-voting
+https://info340b-a18.github.io/react-project-voting/
