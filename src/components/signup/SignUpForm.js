@@ -19,29 +19,29 @@ class SignUpForm extends Component {
 
   }
 
-      //A callback function for registering new users
-      handleSignUp(email, password, handle, avatar) {
-        this.setState({errorMessage:null}); //clear any old errors
-        firebase.auth().createUserWithEmailAndPassword(email,password)
-            .then( (createdUser) => (
-            createdUser.user.updateProfile({
-                displayName: handle,
-                photoURL: avatar
-            }).catch( (e) => {
-                this.setState({
-                errorMessage: e.message
-                });
-            })
-            ).catch( (e) => {
-            this.setState({
-                errorMessage: e.message
-            });
-            })
-        ).catch( (e) => {
-            this.setState({
-            errorMessage: e.message
-            });
-        });
+    //A callback function for registering new users
+    handleSignUp(email, password, handle, avatar) {
+      this.setState({errorMessage:null}); //clear any old errors
+      firebase.auth().createUserWithEmailAndPassword(email,password)
+          .then( (createdUser) => (
+          createdUser.user.updateProfile({
+              displayName: handle,
+              photoURL: avatar
+          }).catch( (e) => {
+              this.setState({
+              errorMessage: e.message
+              });
+          })
+          ).catch( (e) => {
+          this.setState({
+              errorMessage: e.message
+          });
+          })
+      ).catch( (e) => {
+          this.setState({
+          errorMessage: e.message
+          });
+      });
     }
 
     //A callback function for logging in existing users
@@ -57,34 +57,32 @@ class SignUpForm extends Component {
 
     //A callback function for logging out the current user
     handleSignOut(){
-        this.setState({errorMessage:null}); //clear any old errors
-        firebase.auth().signOut()
-            .catch( (e) => {
-            this.setState({
-                errorMessage: e.message
-            });
-        });
+      this.setState({errorMessage:null}); //clear any old errors
+      firebase.auth().signOut()
+          .catch( (e) => {
+          this.setState({
+              errorMessage: e.message
+          });
+      });
     }
 
     componentDidMount(){
-
-        this.authUnRegFunc = firebase.auth().onAuthStateChanged( (user) => {
-            if (user) {
-            this.setState({
-                user: user,
-                loading: false
-            })
-            } else {
-            this.setState({
-                user: null
-            })
-            }
-        }); 
-
+      this.authUnRegFunc = firebase.auth().onAuthStateChanged( (user) => {
+          if (user) {
+          this.setState({
+              user: user,
+              loading: false
+          })
+          } else {
+          this.setState({
+              user: null
+          })
+          }
+      }); 
     }
 
     componentWillUnmount(){
-        this.authUnRegFunc();
+      this.authUnRegFunc();
     }
 
   //update state for specific field
@@ -161,7 +159,7 @@ class SignUpForm extends Component {
             </form>
           </div>
           </div>
-      </div>
+        </div>
       );
       } 
       else { //if logged in, show welcome message
