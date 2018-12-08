@@ -24,25 +24,7 @@ class AboutContent extends Component {
     render() {
         return (
             <div id="aboutContent">
-                <div className="cards">
-                    <div>
-                        <i className="fas fa-pencil-alt fa-3x"></i>
-                        <p>Leave a meaningful review about your voting experience. Whether you're on the go, or at home, VoteFact provides you with access everywhere.</p>
-                    </div>
-                    <div>
-                        <i className="far fa-user fa-3x"></i>                    
-                        <p>Review analytics about voter satisfaction in your local county. Government entities can utilize this data to develop comprehensive solutions</p>
-                    </div>
-                    <div>
-                        <i className="fas fa-chart-bar fa-3x"></i>
-                        <p>Analyze Washington State voter registration and turnout data through an interactive map. Filter by year and age to see how the data changes.</p>
-                    </div>
-                    <div>
-                        <i className="fa fa-gavel fa-3x"></i>
-                        <p>Your votes affect who gets put on the Supreme Court! Review analytics about the ideologies of Supreme Court Justices.</p>
-                    </div>
-                </div>
-
+                <InfoCards />
                 <p>
                     &nbsp;&nbsp;&nbsp;&nbsp; With the 2018 Midterm Election still in the political spotlight, the importance of registering to vote is
                     as crucial as ever. Like all elections,
@@ -68,25 +50,61 @@ class AboutContent extends Component {
 
                 <img className="infographic" src="./img/infographic.png" alt="infographic of voting process"></img>
                 <h2>Project Data:</h2>
-                <div className="cards datacards">
-                    <div>
-                        <i className="fa fa-gavel fa-3x"></i>
-                        <p>
-                            Supreme Court ideology data (1937 - 2015) from the University of Michigan can be viewed 
-                            <a href="https://www.kaggle.com/umichigan/court-justices"> here</a>.
-                        </p>
-                    </div>
-                    <div>
-                        <i className="fa fa-university fa-3x"></i>
-                        <p>
-                            Voter Registration data from the WA Secretary of State can be
-                             viewed <a href="https://www.sos.wa.gov/elections/research/data-and-statistics.aspx">here </a>
-                            under "Voter Participation".
-                        </p>
-                    </div>
-                </div>
-
+                <DataCards />
             </div> 
+        );
+    }
+}
+
+// InfoCards component that represents information about the app
+class InfoCards extends Component {
+    // Render function for the InfoCards Component that will display the cards.
+    render() {
+        return (
+            <div className="cards">
+                <div>
+                    <i className="fas fa-pencil-alt fa-3x"></i>
+                    <p>Leave a meaningful review about your voting experience. Whether you're on the go, or at home, VoteFact provides you with access everywhere.</p>
+                </div>
+                <div>
+                    <i className="far fa-user fa-3x"></i>                    
+                    <p>Review analytics about voter satisfaction in your local county. Government entities can utilize this data to develop comprehensive solutions</p>
+                </div>
+                <div>
+                    <i className="fas fa-chart-bar fa-3x"></i>
+                    <p>Analyze Washington State voter registration and turnout data through an interactive map. Filter by year and age to see how the data changes.</p>
+                </div>
+                <div>
+                    <i className="fa fa-gavel fa-3x"></i>
+                    <p>Your votes affect who gets put on the Supreme Court! Review analytics about the ideologies of Supreme Court Justices.</p>
+                </div>
+            </div>
+        );
+    }
+}
+
+// Datacards component that represents where the data came from
+class DataCards extends Component {
+    // Render function for the DataCards component. Displays where data came from.
+    render() {
+        return (
+            <div className="cards datacards">
+                <div>
+                    <i className="fa fa-gavel fa-3x"></i>
+                    <p>
+                        Supreme Court ideology data (1937 - 2015) from the University of Michigan can be viewed 
+                        <a href="https://www.kaggle.com/umichigan/court-justices"> here</a>.
+                    </p>
+                </div>
+                <div>
+                    <i className="fa fa-university fa-3x"></i>
+                    <p>
+                        Voter Registration data from the WA Secretary of State can be
+                            viewed <a href="https://www.sos.wa.gov/elections/research/data-and-statistics.aspx">here </a>
+                        under "Voter Participation".
+                    </p>
+                </div>
+            </div>
         );
     }
 }

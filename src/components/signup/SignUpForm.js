@@ -7,6 +7,7 @@ import About from '../About/About';
 
 import './SignUpForm.css'; //load module CSS
 
+// Component that represents the sign up form.
 class SignUpForm extends Component {
   constructor(props){
     super(props);
@@ -17,71 +18,71 @@ class SignUpForm extends Component {
     }; 
   }
 
-    //A callback function for registering new users
-    handleSignUp(email, password, handle, avatar) {
-      this.setState({errorMessage:null}); //clear any old errors
-      firebase.auth().createUserWithEmailAndPassword(email,password)
-        .then( (createdUser) => (
-        createdUser.user.updateProfile({
-            displayName: handle,
-            photoURL: avatar
-        }).catch( (e) => {
-            this.setState({
-            errorMessage: e.message
-            });
-        })
-        ).catch( (e) => {
-        this.setState({
-            errorMessage: e.message
-        });
-        })
-      ).catch( (e) => {
+  //A callback function for registering new users
+  handleSignUp(email, password, handle, avatar) {
+    this.setState({errorMessage:null}); //clear any old errors
+    firebase.auth().createUserWithEmailAndPassword(email,password)
+      .then( (createdUser) => (
+      createdUser.user.updateProfile({
+          displayName: handle,
+          photoURL: avatar
+      }).catch( (e) => {
           this.setState({
           errorMessage: e.message
           });
+      })
+      ).catch( (e) => {
+      this.setState({
+          errorMessage: e.message
       });
-    }
-
-    //A callback function for logging in existing users
-    handleSignIn(email, password) {
-      this.setState({errorMessage:null}); //clear any old errors
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .catch( (e) => {
-          this.setState({
-              errorMessage: e.message
-          });
+      })
+    ).catch( (e) => {
+        this.setState({
+        errorMessage: e.message
         });
-    }
+    });
+  }
 
-    //A callback function for logging out the current user
-    handleSignOut(){
-      this.setState({errorMessage:null}); //clear any old errors
-      firebase.auth().signOut()
-        .catch( (e) => {
+  //A callback function for logging in existing users
+  handleSignIn(email, password) {
+    this.setState({errorMessage:null}); //clear any old errors
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch( (e) => {
         this.setState({
             errorMessage: e.message
         });
       });
-    }
+  }
 
-    componentDidMount(){
-      this.authUnRegFunc = firebase.auth().onAuthStateChanged( (user) => {
-        if (user) {
-        this.setState({
-            user: user,
-            loading: false
-        })
-        } else {
-        this.setState({
-            user: null
-        })
-        }
-      }); 
-    }
+  //A callback function for logging out the current user
+  handleSignOut(){
+    this.setState({errorMessage:null}); //clear any old errors
+    firebase.auth().signOut()
+      .catch( (e) => {
+      this.setState({
+          errorMessage: e.message
+      });
+    });
+  }
 
-    componentWillUnmount(){
-      this.authUnRegFunc();
-    }
+  componentDidMount(){
+    this.authUnRegFunc = firebase.auth().onAuthStateChanged( (user) => {
+      if (user) {
+      this.setState({
+          user: user,
+          loading: false
+      })
+      } else {
+      this.setState({
+          user: null
+      })
+      }
+    }); 
+  }
+
+  componentWillUnmount(){
+    this.authUnRegFunc();
+  }
 
   //update state for specific field
   handleChange(event) {
@@ -106,14 +107,12 @@ class SignUpForm extends Component {
   }
 
   render() {
-    
     let content = null;
-
     if(!this.state.user) { //if logged out, show signup form
       content = (
         <div className="container">
           {this.state.errorMessage &&
-              <p className="alert alert-danger">{this.state.errorMessage}</p>
+            <p className="alert alert-danger">{this.state.errorMessage}</p>
           }
           <div className="container" id="sign-in">
           <div className="flex-container">

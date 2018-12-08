@@ -20,7 +20,7 @@ export class MyMap extends Component {
       targetAge: props.age,
       countyInfoPopup:         
         <div>
-          <h2>WA State County Data</h2><br />Hover over a county to see the official data
+          <h2>WA State County Data</h2>Hover over a county to see the official data
         </div>
     };
   }

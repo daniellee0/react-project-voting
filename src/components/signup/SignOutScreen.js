@@ -3,10 +3,11 @@ import firebase from 'firebase/app';
 
 import './SignUpForm.css'; //load module CSS
 
+// Component that represents the signout screen for when the user signs out. 
 class SignOutScreen extends Component {
-
   render() {
 
+    // When authentication changes.
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in. Bring them back to the main page

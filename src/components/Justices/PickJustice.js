@@ -4,6 +4,7 @@ import JusticeCard from './JusticeCard';
 import { Grid, Row } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 
+// Component that represents the user picking a particular justice. Users can compare justices be selecting them.
 export default class PickJustice extends Component {
     //Takes in scores.csv as a prop and creates a state to keep track of the justices 
     //selected and their keys in Firebase
@@ -33,6 +34,7 @@ export default class PickJustice extends Component {
         this.setState(stateCopy);
     }
 
+    // When the component unmounts, remove the reference. 
     componentWillUnmount() {
         this.justiceRef.off();
     }

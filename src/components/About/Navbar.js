@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
-
+import firebase from 'firebase/app';
 import {
     Collapse,
     Navbar,
@@ -37,23 +37,36 @@ export default class NavbarFeatures extends Component {
                 <NavbarBrand tag={Link} to="/">VoteFact</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} className="mr-2" aria-label="Navbar Toggle"/>
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav navbar className="ml-auto">
-                        <NavItem>
-                            <NavLink tag={Link} to="/votefeedback">Feedback</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/justices">Justices</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={Link} to="/signin">Sign In</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink id="signout" tag={Link} to="/signout">Sign Out</NavLink>
-                        </NavItem>
-                    </Nav>
+                    <NavItems />
                 </Collapse>
                 </Navbar>
             </nav>
+        );
+    }
+}
+
+// Component that represents the navigation bar items. These items can be clicked on and the user will be navigated to
+// the various paths. 
+class NavItems extends Component {
+
+    render() {
+        let user = firebase.auth().currentUser;
+
+        return(
+            <Nav navbar className="ml-auto">
+                <NavItem>
+                    <NavLink tag={Link} to="/votefeedback">Feedback</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} to="/justices">Justices</NavLink>
+                </NavItem>
+                {!user ? <NavItem>
+                            <NavLink tag={Link} to="/signin">Sign In</NavLink>
+                        </NavItem> : <div></div>}
+                {user ? <NavItem>
+                            <NavLink id="signout" tag={Link} to="/signout">Sign Out</NavLink>
+                        </NavItem> : <div></div>}
+            </Nav>
         );
     }
 }

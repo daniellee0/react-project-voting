@@ -17,8 +17,7 @@ export default class Charts extends Component {
         this.updateChart = this.updateChart.bind(this);
     }
 
-    // Processes the data and returns an array representing the total response feedback
-    // for each unique location    
+    // Processes the data array and returns an array representing the feedback from all users
     processResponses(data) {
         let results = {leaning: [0, 0], satisfaction: [0 ,0 ,0 ,0 ,0], 
                        participation: [0, 0], mail: [0 ,0 ,0 ,0 ,0], 
@@ -69,8 +68,8 @@ export default class Charts extends Component {
         return results;
     }
 
-    // Takes a data array and obtains and returns an array representing the total 
-    // feedback for every polling location in the data
+    // Takes a data array and obtains and returns an array representing the 
+    // overall satisfaction for all users.
     getOverallSatisfaction(data) {
         let results = [0, 0, 0, 0, 0];
         for (let i=0; i<data.length; i++) {
@@ -89,12 +88,13 @@ export default class Charts extends Component {
         return results;
     }
 
-    // this is for the table
+    // When the component mounts, obtain the feedback from the database and initialize the charts with updated information
     componentDidMount() {
         let stateCopy = this.state;
         stateCopy.textNames = ['Political Leaning', 'Mail Convenience', 'Participation', 'Online Voting', 'Overall Satisfaction'];
         stateCopy.questionNames = ['leaning', 'mail', 'participation', 'online', 'satisfaction'];
         this.feedbackRef = firebase.database().ref('feedback');
+        // Set feedback and initialize charts
         this.feedbackRef.on('value', (snapshot) => {
             let feedback = snapshot.val();
             feedback = Object.keys(feedback).map( (key => {
@@ -105,6 +105,7 @@ export default class Charts extends Component {
             stateCopy.overallSatisfaction = totalResponses;
             feedback = this.processResponses(feedback);
             stateCopy.allFeedback = feedback;
+            // Initialize the charts
             stateCopy.charts[0] = ({data: totalResponses, text: 'Overall Satisfaction', labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
                                     backgroundColor: ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF']});       // Store all charts first? then select which one to display?
             stateCopy.charts[1] = ({data: feedback.mail, text: 'Mail Convenience', labels: ["Very Poor", "Poor", "Fair", "Good", "Very Good"],
@@ -113,24 +114,25 @@ export default class Charts extends Component {
                                     backgroundColor: ['#164074', '#CF2E29', '#A9AAAD']}); 
             this.setState(stateCopy);
         });
-            
     }
 
+    // Removes referene when the components unmounts.
     componentWillUnmount() {
         this.feedbackRef.off();
     }
     
-    // Removes chart
+    // Removes specified chart at the chartIndex.
     removeChart(chartIndex) {
         let chartDataCopy = this.state;
         chartDataCopy.charts.splice(chartIndex, 1);
         this.setState(chartDataCopy);
     }
 
-    // Updates chart
+    // Updates chart based on the specified index and with the text/question for the chart.
     updateChart(chart, question) {
         let chartDataCopy = this.state; 
         let newChart = {};
+        // Determine proper labels and colors for the type of question
         if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'leaning') {
             newChart.labels = ["Democrat", "Republican", "Other"];
             newChart.backgroundColor = ['#164074', '#CF2E29', '#A9AAAD'];
@@ -153,10 +155,9 @@ export default class Charts extends Component {
         this.setState(chartDataCopy);
     }
 
-
+    // Renders the charts
     render() {
-        // console.log(this.state.questionNames);
-        // Options representing the drop down menu the user can choose to display data
+        // Represents the options the user can select to change between charts
         let options = [];
         for (let j=0; j<5; j++) {
             options[j] = <option key={j} value={this.state.questionNames[j]}>{this.state.textNames[j]}</option>
@@ -164,7 +165,7 @@ export default class Charts extends Component {
 
         let user = firebase.auth().currentUser;
         
-        
+        // The charts to be rendered
         let charts = this.state.charts.map( (chart) => {
             return (
                 <div className="chart" key={this.state.charts.indexOf(chart)}>

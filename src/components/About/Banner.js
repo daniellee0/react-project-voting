@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 
-
 // Component representing the banner of the web app
 export default class Banner extends Component {
     render() {
@@ -22,8 +21,7 @@ class Buttons extends Component {
   render() {
     return(
       <div id="banner-buttons">
-        <Link to="/votefeedback" role="button" id="start-button">Feedback</Link>
-        {/* <Link to="/" role="button" id="learn-button">Learn More</Link> */}
+        <Link to="/votefeedback" role="button" id="learn-button">Feedback</Link>
         <Link to="/justices" role="button" id="learn-button">Justices</Link>
       </div>
     );

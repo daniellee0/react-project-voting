@@ -17,6 +17,7 @@ export default class Start extends Component {
     }
 }
 
+// Component that represents the form to enter in their county and have it displayed on the map
 class StartForm extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +31,7 @@ class StartForm extends Component {
         callBack(event.target.value);
     }
 
+    // Renders the component. 
     render() {
         return (
             <form>
