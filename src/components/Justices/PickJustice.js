@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import JusticeCard from './JusticeCard';
 import { Grid, Row } from 'react-bootstrap';
+import { HashLink as Link } from 'react-router-hash-link';
 
 export default class PickJustice extends Component {
     //Takes in scores.csv as a prop and creates a state to keep track of the justices 
@@ -17,6 +18,7 @@ export default class PickJustice extends Component {
 
     //Sets the data from Firebase in the state when the page loads
     componentDidMount() {
+        let stateCopy = this.state;
         this.justiceRef = firebase.database().ref("Justices")
         this.justiceRef.on("value", (snapshot) => {
             if (snapshot.val() != null) {
@@ -24,10 +26,11 @@ export default class PickJustice extends Component {
                 for (var i = 0; i < Object.values(snapshot.val()).length; i++) {
                     let name = Object.values(snapshot.val())[i]
                     let key = Object.keys(snapshot.val())[i]
-                    this.state.keys[name] = key
+                    stateCopy.keys[name] = key
                 }
             }
-        })
+        });
+        this.setState(stateCopy);
     }
 
     componentWillUnmount() {
@@ -52,8 +55,8 @@ export default class PickJustice extends Component {
             return (
                 <label className="checkbox-inline" key={name}><input type="checkbox" value={name} 
                                 checked={this.state.value.includes(name)} onChange={ () => {
-                    let ref = firebase.database().ref("Justices")
-
+                    let ref = firebase.database().ref("Justices");
+                    let stateCopy = this.state;
                     //Adds and removes the name from Firebase (and updates state)
                     if (this.state.value.includes(name)) {
                         let indexState = this.state.value.indexOf(name);
@@ -83,11 +86,12 @@ export default class PickJustice extends Component {
 
                     } else {
                         //Adds the name to Firebase if it wasn't already there
-                        this.state.value.push( name)
-                        let key = ref.push(name).key
-                        this.state.keys[name] = {key}
+                        this.state.value.push( name);
+                        let key = ref.push(name).key;
+                        stateCopy.keys[name] = {key};
+                        this.setState(stateCopy);
                     }
-
+                    
                     //Re-renders the application to show updated charts
                     this.forceUpdate()
                 }}/>{name} &nbsp;&nbsp;&nbsp;</label>
@@ -119,6 +123,7 @@ export default class PickJustice extends Component {
             return (
                 <div>
                     <p>In order to see and use this function you must be logged in.</p>
+                    <Link to="/signin"><button className="login-button">Login</button></Link>
                 </div>
             )
         }

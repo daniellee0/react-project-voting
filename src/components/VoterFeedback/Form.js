@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import { Alert } from 'reactstrap';
+import { HashLink as Link } from 'react-router-hash-link';
 
 // Component reprsenting the different questions and options the user can select to provide feedback
 export default class Form extends Component {
@@ -59,7 +60,10 @@ export default class Form extends Component {
             )
         } else {
             return (
-                <p>You must be logged in to submit a form!</p>
+                <div>
+                    <p>You must be logged in to submit a form!</p>
+                    <Link to="/signin"><button className="login-button">Login</button></Link>
+                </div>
             )
         }
     }
@@ -73,9 +77,6 @@ export default class Form extends Component {
                 <p>Survey Scale: 1=Very Poor, 5=Very Good</p>
                 <Table adoptCallback={(value, type) => this.updateFeedback(value, type)}/>
                 {this.loggedIn()}
-                {/* <div id="submit-feedback">
-                    <button onClick={(e) => this.postForm(e)} form="form">Submit</button>
-                </div> */}
                 {this.state.alreadySubmitted === true ? <Alert color="danger">You already submitted feedback!</Alert> : <div />}
                 {this.state.successfulSubmit === true ? <Alert color="primary">You successfully submitted!</Alert> : <div />}
             </div>

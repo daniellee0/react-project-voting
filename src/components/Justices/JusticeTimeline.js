@@ -75,9 +75,7 @@ export default class JusticeTimeline extends Component {
         //Loops through the dataset to create an array of objects (one object for each justice)
         for (var j = 0; j < justiceNames.length; j++) {
             //Filters the dataset for the particular justice name
-            let justiceFilter = this.props.courtData.filter( (obj) => {
-                return obj.justice_name === justiceNames[j];
-            })
+            let justiceFilter = this.getJusticeName(j, justiceNames);
 
             //Gets an array of all the posterior means (ideology scores) for that justice
             let posteriorMeans = [];
@@ -96,6 +94,13 @@ export default class JusticeTimeline extends Component {
         }
 
         return dataArray;
+    }
+
+    getJusticeName(index, justiceNames) {
+        let justiceFilter = this.props.courtData.filter( (obj) => {
+            return obj.justice_name === justiceNames[index]}
+        );
+        return justiceFilter;
     }
 
     //Creates an array of the court terms (this is used for the x-axis labels)

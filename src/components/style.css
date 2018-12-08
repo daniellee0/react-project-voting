@@ -132,7 +132,7 @@ header {
   background-color: rgb(234, 153, 130);
 }
 
-#begin-button {
+#begin-button, .login-button{
   background-color: rgb(197, 74, 32);
   font-size: 1.2rem;
   border-radius: 5px;
