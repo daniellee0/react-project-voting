@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/react-project-voting/static/media/fontawesome-webfont.674f50d2.eot"
   },
   {
-    "revision": "37fc3a1b7a2a4ad9f015",
+    "revision": "36ab74242f06be22f706",
     "url": "/react-project-voting/static/css/main.315b3ac3.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/react-project-voting/static/media/cityscape2.b8d6ff1e.jpg"
   },
   {
-    "revision": "37fc3a1b7a2a4ad9f015",
-    "url": "/react-project-voting/static/js/main.37fc3a1b.chunk.js"
+    "revision": "36ab74242f06be22f706",
+    "url": "/react-project-voting/static/js/main.36ab7424.chunk.js"
   },
   {
     "revision": "b06871f281fee6b241d60582ae9369b9",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/react-project-voting/static/css/1.5e7b5c83.chunk.css"
   },
   {
-    "revision": "ec9ff7f3ba230acbd5afc488d9610627",
+    "revision": "e78ae8b657e915328706533e8946af34",
     "url": "/react-project-voting/index.html"
   }
 ];

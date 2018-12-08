@@ -1,7 +1,7 @@
 {
   "main.css": "/react-project-voting/static/css/main.315b3ac3.chunk.css",
-  "main.js": "/react-project-voting/static/js/main.37fc3a1b.chunk.js",
-  "main.js.map": "/react-project-voting/static/js/main.37fc3a1b.chunk.js.map",
+  "main.js": "/react-project-voting/static/js/main.36ab7424.chunk.js",
+  "main.js.map": "/react-project-voting/static/js/main.36ab7424.chunk.js.map",
   "static/css/1.5e7b5c83.chunk.css": "/react-project-voting/static/css/1.5e7b5c83.chunk.css",
   "static/js/1.1414e30f.chunk.js": "/react-project-voting/static/js/1.1414e30f.chunk.js",
   "static/js/1.1414e30f.chunk.js.map": "/react-project-voting/static/js/1.1414e30f.chunk.js.map",
@@ -13,6 +13,6 @@
   "static/css/main.315b3ac3.chunk.css.map": "/react-project-voting/static/css/main.315b3ac3.chunk.css.map",
   "static/css/1.5e7b5c83.chunk.css.map": "/react-project-voting/static/css/1.5e7b5c83.chunk.css.map",
   "index.html": "/react-project-voting/index.html",
-  "precache-manifest.671e64c9898bb47fbda0435a051c887d.js": "/react-project-voting/precache-manifest.671e64c9898bb47fbda0435a051c887d.js",
+  "precache-manifest.e3c288256d7ffcd48c73f0d5cf9dfbc8.js": "/react-project-voting/precache-manifest.e3c288256d7ffcd48c73f0d5cf9dfbc8.js",
   "service-worker.js": "/react-project-voting/service-worker.js"
 }
