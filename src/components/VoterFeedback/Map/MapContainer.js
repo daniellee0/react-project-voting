@@ -73,7 +73,7 @@ export class MapContainer extends Component {
                 <h4>WA Voter Registration Data by County</h4>
                 {buttons}
                 <div className="map leaflet-container">
-                    <MyMap year={this.state.targetYear} age={this.state.targetAge} focus={this.state.targetFocus}></MyMap>
+                    <MyMap year={this.state.targetYear} age={this.state.targetAge} focus={this.state.targetFocus} county={this.props.county}></MyMap>
                 </div>
             </div>
         );

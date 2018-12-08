@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Papa from 'papaparse';
-import L from 'leaflet';
 import {Map, TileLayer, GeoJSON} from 'react-leaflet';
 import hash from 'object-hash'; //for making unique keys
 import Control from 'react-leaflet-control';
@@ -12,13 +11,17 @@ export class MyMap extends Component {
   constructor(props){
     super(props)
     this.state = {
-      geojsondata: [], 
+      geojsondata: [],
+      homeCountyGeojson: [], 
       data: [],
       allData: [],
       targetYear: props.year,
       targetFocus: props.focus,
       targetAge: props.age,
-      countyInfoPopup: ''
+      countyInfoPopup:         
+        <div>
+          <h2>WA State County Data</h2><br />Hover over a county to see the official data
+        </div>
     };
   }
 
@@ -31,7 +34,7 @@ export class MyMap extends Component {
     })
   }
 
-    // Sets a new state when the component will updates.
+  // Sets a new state when the component will updates.
   componentDidUpdate(prevProps) {
     if(this.props.year !== prevProps.year || this.props.age !== prevProps.age || this.props.focus !== prevProps.focus){
       this.setState((currentState, currentProps) => {
@@ -56,8 +59,12 @@ export class MyMap extends Component {
         return dataPromise;
       })
       .then( jsonData => {
+        let listLocal = jsonData.features.map( (obj) => {
+            return obj.properties.name
+        });
         this.setState({
-          geojsondata: jsonData
+          geojsondata: jsonData, 
+          listOfCounties: listLocal
         });
       }); 
 
@@ -77,6 +84,11 @@ export class MyMap extends Component {
         });
       }
     });
+  }
+
+  getSpecificCountyData = () => {
+    let countyGeoJSON = this.state.geojsondata.features.filter(obj => obj.properties.name === this.props.county);
+    return countyGeoJSON; 
   }
 
   //Function for adding style to the geojson data of the map
@@ -104,6 +116,17 @@ export class MyMap extends Component {
                 '#C7E5D7';
   }
 
+  addSpecificStyling = (feature) => { //Specific styling for user's home county
+  let specificCountyData = this.state.data.filter(obj => obj.County === feature.properties.name);
+    return {
+      fillColor: this.getColor(specificCountyData[0][this.state.targetFocus]),
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7
+    }
+  }
+
   //Applies the Control popup
   onEachFeature = (feature, layer) => {
 
@@ -127,6 +150,7 @@ export class MyMap extends Component {
 
   // Render Map component. Contains the map and legend as well. 
   render() {
+
       let mapViewport = {
         center: [47.3511, -120.7401],
         zoom: 6
@@ -155,9 +179,21 @@ export class MyMap extends Component {
               id='mapbox.streets'
             />
             {this.state.data.length > 0 ? 
-            <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
+            <div>
+              <GeoJSON ref="geojson" key={hash(this.state.geojsondata)} data={this.state.geojsondata} style={this.addStyle} onEachFeature={this.onEachFeature.bind(this)}/>
+            
+              {this.state.listOfCounties ? 
+              this.state.listOfCounties.includes(this.props.county) ?
+                <GeoJSON ref="geojson2" key={hash(this.props.county)} data={this.getSpecificCountyData()} style={this.addSpecificStyling} onEachFeature={this.onEachFeature.bind(this)}/>
+              :
+              <div />
+            :
+            <div />}
+            
+            </div>
             : 
             <div />}
+
             <Control position="bottomright">
               <div>
                 {legend}
@@ -167,6 +203,27 @@ export class MyMap extends Component {
               <div className='info legend'>
                 {this.state.countyInfoPopup}
               </div>
+            </Control>
+            <Control position='bottomleft'>
+              
+            {this.state.listOfCounties ? 
+            this.state.listOfCounties.includes(this.props.county) ?
+              <div className='info'>
+                Home County: {this.props.county}
+              </div>
+              :
+              <div className='info'>
+                Enter your Home County in the Form Above
+              </div>
+            :
+            <div/>
+            }
+            
+
+              {/* <div className='info legend'>
+                <p>Home County: {this.props.county}</p>
+              </div> */}
+
             </Control>
           </Map>
       );

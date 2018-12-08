@@ -14,7 +14,7 @@ export default class Analytics extends Component {
                         <Legend />
                     </div>
                     <Charts county={this.props.county}/>
-                    <MapContainer></MapContainer>
+                    <MapContainer county={this.props.county}></MapContainer>
                 </div>
             </div>
         );
