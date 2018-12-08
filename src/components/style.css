@@ -378,6 +378,11 @@ td label {
   text-align: left;
 }
 
+/* JUSTICE INFO */
+.justiceInfo {
+  text-align: left;
+}
+
 /* Slider */
 .slider {
   -webkit-appearance: none;
@@ -408,6 +413,8 @@ td label {
   background: rgb(71, 125, 177);
   cursor: pointer;
 }
+
+
 
 /* LARGER THAN MOBILE */
 

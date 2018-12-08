@@ -79,8 +79,8 @@ export default class JusticeCardsSection extends Component {
                         Note: Justices Neil Gorsuch and Brett Kavanaugh are not listed under current justices because the dataset that provides the
                         "Martin-Quinn" scores only goes until 2015.
                     </p>
-                    <p id="p">
-                        Developed by Andrew D. Martin (University of Michigan, College of Literature, Science, and the Arts) and Kevin M. Quinn 
+                    <p id="p" className="justiceInfo">
+                        &nbsp;&nbsp;&nbsp;&nbsp; Developed by Andrew D. Martin (University of Michigan, College of Literature, Science, and the Arts) and Kevin M. Quinn 
                         (Department of Political Science, University of Michigan), "Martin-Quinn" scores measure each justice's political leanings 
                         on a left-right political spectrum. These scores are based on the voting record and written opinion of the justices as well 
                         as other factors such as their speeches and the political climate when they were appointed. The graphs below portray how 

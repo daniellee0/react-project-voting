@@ -32,8 +32,8 @@ export class JusticeContent extends Component {
         return (
             <div>
                 <h1>Ideology of the Supreme Court</h1>
-                <p>
-                    The Supreme Court of the United States of America is comprised of nine justices who were appointed by presidents with
+                <p className="justiceInfo">
+                    &nbsp;&nbsp;&nbsp;&nbsp; The Supreme Court of the United States of America is comprised of nine justices who were appointed by presidents with
                     different political ideologies. Therefore, the justices represent a wide range of political beliefs. Supreme Court Justices 
                     appointed for life so they can focus on the US Constitution instead of pleasing the people that will support them for 
                     re-election.
