@@ -22,13 +22,13 @@ export default class App extends Component {
             <Router basename={process.env.PUBLIC_URL+'/'}>
                 <Switch>
                     <Route exact path='/home' component={HomePage} />
-                    <Route  path='/justices' render={(props) => {
+                    <Route exact path='/justices' render={(props) => {
                         return <Justices {...props} courtData={this.props.courtData}/>
                     }}/>
-                    <Route  path='/votefeedback' component={VoteFeedback} />
-                    <Route  path='/signin' component={SignUpForm} />
-                    <Route  path='/signout' component={SignOutScreen} />
-                    <Redirect to='/home' />
+                    <Route exact path='/votefeedback' component={VoteFeedback} />
+                    <Route exact path='/signin' component={SignUpForm} />
+                    <Route exact path='/signout' component={SignOutScreen} />
+                    <Route component={HomePage} />
                 </Switch>
             </Router>
         );
