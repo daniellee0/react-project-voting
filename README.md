@@ -1,23 +1,16 @@
-# VoteFact Web Application
+# VoteFact
 
-## Collaboration
-This web application makes full use of both partners interactions (Form+Graphs and Map). Descriptive content from both partners was also included and a larger focus on Daniel's design was involved in this web application. These interactions
-provide the user an added level of interactivity when learning/analyting voting data. Daniel's design was modified to
-account for Kyle's county level data and so the design is focused on counties. 
+# Authors
+Kyle Avalani, Daniel Lee, Andrea Koozer, Hilton Vo
 
+## About
+Our web application has two main components, both designed to indulge voters on politics.
 
-## How to Interact in its Current State (Stage 3)
-Our web application has two main components, both designed to teach users about voting in Washington state. 
+The first main feature allows users to provide voter feeback and obtain analytical data about voter turnout in Washington state. To use, simply fill out 
+the county form and the feedback form. After submitting, users can see data on their specified county and voter feedback data from all users that responded
+to the same form. The second feature allows users to analyze justice ideology. To use, select the justice and see how they compare against others. 
 
-The first section utilizes an external csv file representing the data that will be used to display analytics. Although not implemented at this time, new entries should be added to the csv file every time the user submits a new form. For now, the user should enter a county name already present in the csv file and should click "Begin" to see analytical information about that County (eg. "Pierce", "King", etc). Casing is ignored. 
-
-The second section utilizes an external csv file containing data on voter registration and voter turnout rates for each WA state county, and then maps it on a Leaflet map based off of fields chosen by the user on buttons above the map. The user can switch betweeen different years, different ages, and different focuses. 
-
-## Libraries Used
-Boostrap, ChartJS, PapaParse, Leaflet, LeafletReact, ChartReact
-
-## Authors
-Kyle Avalani
+This app was bootstrapped with Create React App.
 
 Daniel Lee
 
