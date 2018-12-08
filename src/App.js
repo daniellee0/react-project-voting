@@ -3,7 +3,6 @@ import 'leaflet/dist/leaflet.css';
 import {} from './components/style.css';
 import 'react-rangeslider/lib/index.css';
 
-
 import React, { Component } from 'react';
 import Header from './components/About/Header';
 import Footer from './components/About/Footer';
@@ -23,12 +22,12 @@ export default class App extends Component {
             <Router basename={process.env.PUBLIC_URL+'/'}>
                 <Switch>
                     <Route exact path='/home' component={HomePage} />
-                    <Route exact path='/justices' render={(props) => {
+                    <Route  path='/justices' render={(props) => {
                         return <Justices {...props} courtData={this.props.courtData}/>
                     }}/>
-                    <Route exact path='/votefeedback' component={VoteFeedback} />
-                    <Route exact path='/signin' component={SignUpForm} />
-                    <Route exact path='/signout' component={SignOutScreen} />
+                    <Route  path='/votefeedback' component={VoteFeedback} />
+                    <Route  path='/signin' component={SignUpForm} />
+                    <Route  path='/signout' component={SignOutScreen} />
                     <Redirect to='/home' />
                 </Switch>
             </Router>
