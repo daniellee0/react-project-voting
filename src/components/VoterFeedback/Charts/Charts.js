@@ -151,28 +151,6 @@ export default class Charts extends Component {
         newChart.text = this.state.textNames[this.state.questionNames.indexOf(question)];
         chartDataCopy.charts[chart] = newChart;
         this.setState(chartDataCopy);
-        // let chartsCopy = this.state.charts;    
-        // let chartDataCopy = this.state.charts[chart]; 
-        // if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'leaning') {
-        //     chartDataCopy.labels = ["Democrat", "Republican", "Other"];
-        //     chartDataCopy.backgroundColor = ['#164074', '#CF2E29', '#A9AAAD'];
-        // } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'mail') {
-        //     chartDataCopy.labels = ["Very Poor", "Poor", "Fair", "Good", "Very Good"];
-        //     chartDataCopy.backgroundColor = ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'];
-        // } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'participation') {
-        //     chartDataCopy.labels = ["Yes", "No"];
-        //     chartDataCopy.backgroundColor = ['#2ba031', '#a02b2b'];
-        // } else if (this.state.questionNames[this.state.questionNames.indexOf(question)] === 'online') {
-        //     chartDataCopy.labels = ["Yes", "No"];
-        //     chartDataCopy.backgroundColor = ['#2ba031', '#a02b2b'];
-        // } else {
-        //     chartDataCopy.labels = ["Very Poor", "Poor", "Fair", "Good", "Very Good"];
-        //     chartDataCopy.backgroundColor = ['#FC8F6E', '#D7A44A', '#9DB756', '#5EC087', '#3EBEBF'];
-        // }
-        // chartDataCopy.data = this.state.allFeedback[question];
-        // chartDataCopy.text = this.state.textNames[this.state.questionNames.indexOf(question)];
-        // chartsCopy[chart] = chartDataCopy;
-        // this.setState(chartsCopy);  
     }
 
 

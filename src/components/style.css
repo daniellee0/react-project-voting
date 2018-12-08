@@ -184,26 +184,24 @@ header {
   margin-right: 0.7rem;
 }
 
-table {
+#form table {
   margin-left: 30px;
   margin-right: 30px;
 }
 
 
-td {
+#form td {
   padding: 1rem;
   display: table-row;
   text-align: left;
 }
 
-td input {
+#form td input {
   margin-left: 3px;
 } 
 
 #form tr {
   height: 120px;
-  /* padding-top: 10rem */
-
 } 
 
 td label {
@@ -473,19 +471,19 @@ td label {
     font-size: 3rem;
   }
 
-  table {
+  #form table {
       margin: auto;
   }
 
-  td input {
+  #form td input {
       margin-left: 1px;
   }
 
-  td {
+  #form td {
     display: table-cell;
   }
 
-  tr td:nth-child(2) {
+  #form tr td:nth-child(2) {
       text-align: right;
   }
 

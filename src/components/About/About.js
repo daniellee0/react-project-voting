@@ -66,7 +66,7 @@ class AboutContent extends Component {
                     Thus, users can utilize this information to determine how closely voter satisfaction might correlate with voter turnout.
                 </p>
 
-                <img className="infographic" src="/img/infographic.png" alt="infographic of voting process"></img>
+                <img className="infographic" src="../../img/infographic.png" alt="infographic of voting process"></img>
                 <h2>Project Data:</h2>
                 <div className="cards datacards">
                     <div>
